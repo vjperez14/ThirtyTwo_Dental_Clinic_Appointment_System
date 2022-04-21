@@ -1,0 +1,3 @@
+<span class="info_error">Desktop notification request was declined.</span>
+
+<div style="margin-top: 25px;">To re-request the desktop notification access, you'll want to refer to the <a href="https://www.phplivesupport.com/help_desk.php?docid=18" target="_blank">Reset Desktop Notification Settings</a> documentation.  After the settings have been reset, <a href="./notifications.php?jump=dn&console=<?php echo $console ?>&<?php echo time() ?>">reload this page</a> to re-request permission.</div>

@@ -1,0 +1,28 @@
+=============================================================
+
+Improve server performance with custom logging conditions
+
+=============================================================
+
+The PHP Live! system contains an ajax/ directory that has several PHP files that are requested periodically by the operator console, visitor chat window and the PHP Live! HTML Code.  The ajax periodic requests performs various tasks to update the operator status, chat status, visitor footprint status and more.  The requests are very fast and takes milliseconds to process with very minimal CPU usage.  But each request does get logged to the web server log files.
+
+Please refer to the following documentation for more information on optimizing your web server log files:
+
+http://www.phplivesupport.com/r.php?r=logging
+
+
+=============================================================
+
+Secure the web/chat_sessions/ directory from web access
+using a .htaccess file
+
+=============================================================
+
+Some servers may have trouble reading a .htaccess file or display an error when .htaccess file exists in a directory.  This is the primary reason the .htaccess is not automatically included in the web/chat_sessions/ directory.  But if your server can process .htaccess files and you would like extra security, simply place the following lines in a .htaccess file inside the web/chat_sessions/ directory (web/chat_sessions/.htaccess):
+
+Deny from All
+
+This will deny URL view access to the web/chat_sessions/ directory, including the temporary chat files inside that directory.
+
+NOTE:
+Do not place the "Deny from All" .htaccess in the root web/ directory (web/.htaccess). It will break functions (logo, chat icons, etc) in many areas.

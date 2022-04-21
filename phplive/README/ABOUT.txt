@@ -1,0 +1,7 @@
+===========================================
+
+PHP Live! is a product by PHP Live LLC
+
+https://www.phplivesupport.com
+
+===========================================
