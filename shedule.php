@@ -1,6 +1,6 @@
 <?php
-    include 'php/config.php';
-    include 'php/calendar.php';
+    include 'assets/php/config.php';
+    include 'assets/php/calendar.php';
     // include 'php/calendar_settings.php';
     
     session_start();
@@ -28,56 +28,59 @@
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/icomoon.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
-    <link href="css/schedule.css" rel="stylesheet" type="text/css">
-    <link href="css/calendar.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/schedule.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/calendar.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" style="margin-buttom:;"
-        id="ftco-navbar">
+    <nav class="navbar  navbar-expand-lg  navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="index.php"><img src="img/logos.png" width="125" height="120"></a>
+            <a class="navbar-brand" href="index.php"><img src="assets/img/logos.png" width="200" height="100"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#company" class="nav-link">About</a></li>
+                    <li class="nav-item "><a href="index.php" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.php#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.php#company" class="nav-link">About</a></li>
                     <li class="nav-item active"><a href="shedule.php" class="nav-link">Shedule</a></li>
                     <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
                     <?php
                         switch ($isActive) {
                             case 'value':{
-                            echo "<li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>&nbsp &nbsp
-                                <li class='nav-item cta'><a href='logout.php' class='nav-link'><span>Logout</span></a></li> ";
+                                ?>
+                                    <li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
+                                    <li class='nav-item cta'><a href='assets/php/logoutprocess.php' class='nav-link'><span>Logout</span></a></li>
+                                <?php
                             break;
                             }
-                            
                             default:{
-                            echo "<li class='nav-item cta'><a href='login.php' class='nav-link'><span>Log In</span></a></li> &nbsp &nbsp
-                            <li class='nav-item cta'><a href='register.php' class='nav-link'><span>Register</span></a></li>";
+                                ?>
+                                    <li class="nav-item cta"><a href="login.php" class="nav-link"><span>Log In</span></a></li>
+                                    <li class="nav-item cta"><a href="register.php" class="nav-link"><span>Register</span></a></li>
+                                <?php
                             break;
                             } 
                         }
@@ -90,7 +93,7 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/slides/slides2.png" alt="Image">
+                    <img class="w-100" src="assets/img/slides/slides2.png" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome to Thirty-two Dental
@@ -128,9 +131,10 @@
             </button>
         </div>
     </div>
-    
+
     <div class="content home ">
         <?=$calendar?>
+        <br>
     </div>
     <footer class="ftco-footer ftco-bg-dark ftco-section1">
         <div class="container">
@@ -168,9 +172,10 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2">Our Services</h2>
                         <ul class="list-unstyled">
-                            <li><a href="service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a></li>
-                            <li><a href="service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
-                            <li><a href="service4.php" class="py-2 d-block">DENTURES</a></li>
+                            <li><a href="services/service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a>
+                            </li>
+                            <li><a href="services/service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
+                            <li><a href="services/service4.php" class="py-2 d-block">DENTURES</a></li>
                         </ul>
                     </div>
                 </div>
@@ -179,8 +184,8 @@
                         <h2 class="ftco-heading-2"></h2>
                         <ul class="list-unstyled">
                             <br>
-                            <li><a href="service5.php" class="py-2 d-block">TOOTH EXTRACTION</a></li>
-                            <li><a href="service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
+                            <li><a href="services/service5.php" class="py-2 d-block">TOOTH EXTRACTION</a></li>
+                            <li><a href="services/service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
                             </li>
                         </ul>
                     </div>
@@ -217,27 +222,26 @@
             </div>
         </div>
     </footer>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00" /></svg></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.timepicker.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
     </script>
-    <!-- bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"> </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <!-- custom script -->
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
+    <script src="assets/js/google-map.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>

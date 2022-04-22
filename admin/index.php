@@ -8,36 +8,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
 	<title>Administrator Access - Thirty-two Dental Care Center</title>
 	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="../img/logo.jpg">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="../img/logo.jpg">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="assets/css/aos.css">
 
-	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="assets/css/ionicons.min.css">
 
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="css/jquery.timepicker.css">
+	<link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="assets/css/jquery.timepicker.css">
 
-
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="assets/css/flaticon.css">
+	<link rel="stylesheet" href="assets/css/icomoon.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	<nav class="navbar  navbar-expand-lg  navbar-light bg-light">
 		<div class="container">
-			<a class="navbar-brand" href="index.php"><img src="../img/logos.png" width="125" height="120"></a>
+			<a class="navbar-brand" href="index.php"><img src="../assets/img/logos.png" width="200" height="100"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -60,64 +62,49 @@
 		</div>
 	</nav>
 	<!-- END nav -->
-	<section class="ftco-section bg-light" id="company">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3 ftco-animate">
-				<div class="col-md-12 text-center heading-section ftco-animate">
-					<br><br><br><br><br>
-					<span class="subheading1">Thirty-two Dental Care Center</span>
-					<h2>Pending Appointments</h2>
-					<div class="col-lg-12">
-					<input type="text" id="myTicket" onkeyup="myFunction()" placeholder="Seerch for Ticket..." title="Type in a reference ID" style="font-size: 20px;">
-						<table id="appttable" class="table table-bordered">
-							<thead>
-								<tr>
-									<th>Ticket</th>
-									<th>Full Name</th>
-									<th>Phone Number</th>
-									<th>Email Address</th>
-									<th>Home Address</th>
-									<th>Service</th>
-									<th>Date</th>
-									<th>Time</th>
-									<th>Message</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-									include('../php/config.php');
-									$sql = "SELECT * FROM appointments WHERE `status` = 'pending'";
-									$res = mysqli_query($con, $sql );
-									$count = 0;
-									while($row=mysqli_fetch_array($res)){
-										$time = $row['time'];
-										$time =  date('g:i A', strtotime($time));
-										
-										echo "<tr>";
-											echo "<td>";echo $row['ticket']; echo "</td>";
-											echo "<td>";echo $row["name"]; echo "</td>";
-											echo "<td>";echo $row["phone"];  echo "</td>";
-											echo "<td>";echo $row["email"];  echo "</td>";
-											echo "<td>";echo $row["address"];  echo "</td>";
-											echo "<td>";echo $row["service"];  echo "</td>";
-											echo "<td>";echo $row["date"];  echo "</td>";
-											echo "<td>";echo $time;  echo "</td>";
-											echo "<td>";echo $row["issue"];  echo "</td>";
-											echo "<td><button name='approve".$count."' id='approve".$count."' type='submit' class='btn form-group btn-success' value=".$row['ticket'].">Approve</button>";
-											echo "<button name='cancel".$count."' id='cancel".$count."' type='submit' class='btn form-group btn-warning' value=".$row['ticket'].">Reschedule</button>";
-											echo "<button name='decline".$count."' id='decline".$count."' type='submit' class='btn  btn-danger' value=".$row['ticket'].">Decline</button></td>";
-										echo "</tr>";
-										$count++;
-									}
-								?>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br><br>
-	</section>
+	<div class="pending-body">
+		<table id="appttable" class="stripe" >
+			<thead>
+				<tr>
+					<th>Ticket</th>
+					<th>Full Name</th>
+					<th>Phone Number</th>
+					<th>Email Address</th>
+					<th>Service</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Message</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					include('assets/php/config.php');
+					$sql = "SELECT * FROM appointments WHERE `status` = 'pending'";
+					$res = mysqli_query($con, $sql );
+					$count = 0;
+					while($row=mysqli_fetch_array($res)){
+						$time = $row['time'];
+						$time =  date('g:i A', strtotime($time));
+						
+						echo "<tr>";
+							echo "<td>";echo $row['ticket']; echo "</td>";
+							echo "<td>";echo $row["name"]; echo "</td>";
+							echo "<td>";echo .0.$row["phone"];  echo "</td>";
+							echo "<td>";echo $row["email"];  echo "</td>";
+							echo "<td>";echo $row["service"];  echo "</td>";
+							echo "<td>";echo $row["date"];  echo "</td>";
+							echo "<td>";echo $time;  echo "</td>";
+							echo "<td style='width: 50px;'><p class='break-line'>";echo $row["issue"];  echo "</p></td>";
+							echo "<td style='text-align: center; width: 50px;'><button name='approve".$count."' id='approve".$count."' type='submit' class='btn form-group btn-success' value=".$row['ticket'].">Approve</button>";
+							echo "<button name='cancel".$count."' id='cancel".$count."' type='submit' class='btn form-group btn-warning' value=".$row['ticket'].">Reschedule</button>";
+							echo "<button name='decline".$count."' id='decline".$count."' type='submit' class='btn  btn-danger' value=".$row['ticket'].">Decline</button></td>";
+						echo "</tr>";
+						$count++;
+					}
+				?>
+		</table>
+	</div>
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
 			<div class="row">
@@ -136,47 +123,40 @@
 	</footer>
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-				stroke="#F96D00" /></svg></div>
-
-	<script src="js/timepicki.js"></script>
+		<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+			stroke="#F96D00" /></svg>
+	</div>
+	<script src="assets/js/timepicki.js"></script>
 	<script>
 		$('#timepicker1').timepicki();
 	</script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.stellar.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="assets/js/aos.js"></script>
+	<script src="assets/js/jquery.animateNumber.min.js"></script>
+	<script src="assets/js/bootstrap-datepicker.js"></script>
+	<script src="assets/js/jquery.timepicker.min.js"></script>
+	<script src="assets/js/scrollax.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/admin.js"></script>
-	<script src="js/search.js"></script>
+	<script src="assets/js/google-map.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/admin.js"></script>
+	<script src="assets/js/search.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#appttable').DataTable();
+        } );
+    </script>
 </body>
-<?php
-	if(isset($_POST["approve"])){
-		$res=mysqli_query($link, "select * from appointments where status='pending' limit 1");
-		while($row=mysqli_fetch_array($res)){
-			$appno=$row['appno'];
-			mysqli_query($link, "update appointments set status='approved' where appno=$appno limit 1");
-		}
-		?>
-<script type="text/javascript">
-	window.location.href = "admin.php";
-</script>
-<?php
-	}
-?>
 </html>

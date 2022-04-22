@@ -1,1 +1,0 @@
-<?php $PROACTION_VERSION = "1.2" ; ?>

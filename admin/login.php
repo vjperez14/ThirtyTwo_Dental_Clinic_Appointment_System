@@ -11,36 +11,36 @@ session_start();
 
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
 
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
 
-  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="assets/css/aos.css">
 
-  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="assets/css/ionicons.min.css">
 
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
 
 
-  <link rel="stylesheet" href="css/flaticon.css">
-  <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/icomoon.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="hero-wrap js-fullheight">
     <div class="overlay"></div>
     <div class="container-fluid px-0">
       <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
-        <img class="one-half js-fullheight align-self-end order-md-last img-fluid" src="../img/slides/sildes4.png" alt="">
+        <img class="one-half js-fullheight align-self-end order-md-last img-fluid" src="../assets/img/admin_login.png" alt="">
         <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
           <div class="text mt-5">
             <span class="subheading">For Administrator only</span>
             <h1 class="mb-3" style="font-size: 30px;"><span>Log In to your Thirty-two Dental Care Center Administrator Account</span></h1>
-            <form name="form1" method="post" action="php/loginprocess.php">
+            <form name="form1" method="post" action="assets/php/loginprocess.php">
               <div class="form-group">
                 <input type="text" name="user" id="user" class="form-control" placeholder="" required>user
               </div>
@@ -54,8 +54,6 @@ session_start();
                       echo "<span style='color:red;'>$error</span>";
                   }
                 ?> 
-
-
               </div>
               <div class="col-md-4 ftco-animate" style="margin-left: -5%;">
                 <input type="submit" id="login" name="login" value="Log In" class="btn btn-secondary py-3 px-4">
@@ -87,24 +85,24 @@ session_start();
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
         stroke="#F96D00" /></svg></div>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.easing.1.3.js"></script>
+  <script src="assets/js/jquery.waypoints.min.js"></script>
+  <script src="assets/js/jquery.stellar.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/aos.js"></script>
+  <script src="assets/js/jquery.animateNumber.min.js"></script>
+  <script src="assets/js/bootstrap-datepicker.js"></script>
+  <script src="assets/js/jquery.timepicker.min.js"></script>
+  <script src="assets/js/scrollax.min.js"></script>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script src="assets/js/google-map.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
 <?php 

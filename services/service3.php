@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  $isActive = isset($_SESSION['email']);
+  if($isActive){
+    $user = $_SESSION['email'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,68 +16,83 @@
 
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="../assets/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/animate.css">
 
-  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../assets/css/magnific-popup.css">
 
-  <link rel="stylesheet" href="assets/css/aos.css">
+  <link rel="stylesheet" href="../assets/css/aos.css">
 
-  <link rel="stylesheet" href="assets/css/ionicons.min.css">
+  <link rel="stylesheet" href="../assets/css/ionicons.min.css">
 
-  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="../assets/css/jquery.timepicker.css">
 
 
-  <link rel="stylesheet" href="assets/css/flaticon.css">
-  <link rel="stylesheet" href="assets/css/icomoon.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/flaticon.css">
+  <link rel="stylesheet" href="../assets/css/icomoon.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-  <nav class="navbar  navbar-expand-lg  navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.php"><img src="assets/img/logos.png" width="200" height="100"></a>
+      <a class="navbar-brand" href="index.php"><img src="../assets/img/logos.png" width="200" height="100"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
         aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="#company" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li>
+          <li class="nav-item"><a href="../index.php" class="nav-link">Home</a></li>
+          <li class="nav-item active"><a href="../index.php#services" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="../index.php#company" class="nav-link">About</a></li>
           <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-          <li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
-          <li class='nav-item cta'><a href='logout.php' class='nav-link'><span>Logout</span></a></li>
+          <?php
+              switch ($isActive) {
+                  case 'value':{
+                      ?>
+                        <li class='nav-item'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
+                        <li class='nav-item'><a href='logout.php' class='nav-link'><span>Logout</span></a></li>
+                    <?php
+                  break;
+                  }
+                  default:{
+                      ?>
+                        <li class="nav-item"><a href="login.php" class="nav-link"><span>Log In</span></a></li>
+                        <li class="nav-item"><a href="register.php" class="nav-link"><span>Register</span></a></li>
+                      <?php
+                  break;
+                  } 
+              }
+          ?>
         </ul>
       </div>
     </div>
   </nav>
   <!-- END nav -->
-  <section class="ftco-section services-section bg-light">
-    <div class="container">
-      <br><br><br><br><br>
-      <img src="assets/images/welcome.png" alt="" width="75%" length="50%" style="margin-left: 13%;"><br>
-      <div class="row justify-content-center mb-5 pb-3">
-        <div class="col-md-14 text-center heading-section ftco-animate">
-          <span class="subheading1">WELCOME</span>
-          <h2 class="mb-4">You are now a Thirty-two Dental Care!</h2>
-          <p>Thank you for creating an account with us. We are looking forward to working with you soon. </p>
-        </div>
-        <div class="col-md-3 ftco-animate">
-          <p class="mb-0"><a href="index.php" class="btn btn-secondary py-3 px-4">Go back to homepage</a>
-            <br><br>
-            <a href="login.php" class="btn btn-secondary py-3 px-4">Log In to your account</a></p>
+  <div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div class="container-fluid px-0">
+      <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
+        <img class="one-third js-fullheight align-self-end order-md-last img-fluid"
+          src="../assets/img/tooth-whitening.png" alt="">
+        <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+          <div class="text mt-5">
+            <span class="subheading">SERVICES</span>
+            <h1 class="mb-3"><span>RESTORATION OR PASTA</span></h1>
+            <p class="mb-0">Surface/area of each tooth ₱800</p>
+            <p class="mb-0">Additional surface/area of each tooth ₱300</p>
+            <p class="mb-0">Price is depends how big the aree of the tooth will restore</p>
+            <p class="mb-0">**additional charges for infection control and check up**</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  <br><br>
+  </div>
+
   <footer class="ftco-footer ftco-bg-dark ftco-section1">
     <div class="container">
       <div class="row mb-5 pb-5 align-items-center d-flex">
@@ -106,9 +128,9 @@
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2">Our Services</h2>
             <ul class="list-unstyled">
-              <li><a href="services/service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a></li>
-              <li><a href="services/service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
-              <li><a href="services/service4.php" class="py-2 d-block">DENTURES</a></li>
+              <li><a href="service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a></li>
+              <li><a href="service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
+              <li><a href="service4.php" class="py-2 d-block">DENTURES</a></li>
             </ul>
           </div>
         </div>
@@ -117,8 +139,8 @@
             <h2 class="ftco-heading-2"></h2>
             <ul class="list-unstyled">
               <br>
-              <li><a href="services/service5.php" class="py-2 d-block">TOOTH EXTRACTION</a></li>
-              <li><a href="services/service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
+              <li><a href="service5.php" class="py-2 d-block">TOOTH EXTRACTION</a></li>
+              <li><a href="service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
               </li>
             </ul>
           </div>
@@ -159,26 +181,24 @@
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
         stroke="#F96D00" /></svg></div>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="assets/js/jquery.waypoints.min.js"></script>
-  <script src="assets/js/jquery.stellar.min.js"></script>
-  <script src="assets/js/owl.carousel.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/aos.js"></script>
-  <script src="assets/js/jquery.animateNumber.min.js"></script>
-  <script src="assets/js/bootstrap-datepicker.js"></script>
-  <script src="assets/js/jquery.timepicker.min.js"></script>
-  <script src="assets/js/scrollax.min.js"></script>
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../assets/js/popper.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.easing.1.3.js"></script>
+  <script src="../assets/js/jquery.waypoints.min.js"></script>
+  <script src="../assets/js/jquery.stellar.min.js"></script>
+  <script src="../assets/js/owl.carousel.min.js"></script>
+  <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/jquery.animateNumber.min.js"></script>
+  <script src="../assets/js/bootstrap-datepicker.js"></script>
+  <script src="../assets/js/jquery.timepicker.min.js"></script>
+  <script src="../assets/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
   </script>
-  <script src="assets/js/google-map.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-  </script>
+  <script src="../assets/js/google-map.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 
 </html>
