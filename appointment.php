@@ -1,10 +1,36 @@
 <?php
-session_start();
-include("assets/php/info.php");
-$isActive = isset($_SESSION['email']);
-if($isActive){
-  $user = $_SESSION['email'];
-}
+  include 'assets/php/config.php';
+  include 'assets/php/calendar.php';
+  session_start();
+  include("assets/php/info.php");
+  $isActive = isset($_SESSION['email']);
+  if($isActive){
+    $user = $_SESSION['email'];
+  }
+  $calendar = new Calendar(date('Y-m-d'));
+  //calendar
+  $sql = "SELECT time, date FROM appointments GROUP BY time HAVING COUNT(*) >= 1 ORDER BY apt_id ASC;";
+  $result = mysqli_query($con, $sql);
+  while($row=mysqli_fetch_array($result)){
+
+    $time = $row['time'];
+    // $time =  date('g:i A', strtotime($time));
+    $date = $row['date'];
+
+    // $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments GROUP BY `time`";
+    $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments WHERE `time` = '$time'";
+    $resultTime = mysqli_query($con, $sqlCount);
+    $data = mysqli_fetch_assoc($resultTime);
+    $count = $data['count'];
+
+    if ($count == '1') {
+      $calendar->add_event($time, $date, 1, 'green');
+    } elseif ($count == '2') {
+      $calendar->add_event($time, $date, 1, 'yellow');
+    } elseif ($count == '3') {
+      $calendar->add_event($time, $date, 1, 'red');
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +60,9 @@ if($isActive){
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/index.css">
+
+  <link href="assets/css/schedule.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/calendar.css" rel="stylesheet" type="text/css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
@@ -61,16 +90,24 @@ if($isActive){
     </script>
     <style>
       .body-image {
-    width: 600px;
-    height: 400px;
-}
+        width: 600px;
+        height: 400px;
+      }
+      .calendar-ml{
+            margin: 0px 0px 0px 10px;
+            padding: 0px;
+      }
 
-@media only screen and (min-width: 1920px) {
-    .body-image {
-        width: 1000px;
-        height: 800px;
-    }
-}
+      @media only screen and (min-width: 1920px) {
+          .calendar-ml{
+            margin: 0px 0px 0px 150px;
+            padding: 0px;
+          }
+          .body-image {
+              width: 1000px;
+              height: 800px;
+          }
+      }
     </style>
 </head>
 
@@ -87,7 +124,7 @@ if($isActive){
           <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
           <li class="nav-item"><a href="#company" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li>
+          <!-- <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li> -->
           <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
           <?php
             switch ($isActive) {
@@ -114,8 +151,9 @@ if($isActive){
   <!-- END nav -->
   
   <div class="d-md-flex">
-    <div class="one-half align-self-center">
-      &nbsp &nbsp &nbsp &nbsp &nbsp <img class="body-image" src="assets/img/logos.png" width="600" height="400">
+    <div class="content home calendar-ml">
+        <?=$calendar?>
+        <br>
     </div>
     <div class="one-forth ml-md-5 align-self-center">
       <br>
@@ -159,7 +197,7 @@ if($isActive){
           </div>
           <div class="form-group">
             <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
-              <option value="null">What service would you like to avail?</option>
+              <option value="null" disabled selected>What service would you like to avail?</option>
               <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
               <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
               <option value="DENTURES">DENTURES </option>
@@ -172,8 +210,21 @@ if($isActive){
               style="padding: 10px; padding-right: 341px;" required>
           </div>
           <div class="form-group">
-            <input id="time" type="time" placeholder=" Time of Appointment" name="time"
-              style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required><br>
+            <select class="form-control" id="time" name="time" style="font-size: 16px;" required>
+              <option value="null" disabled selected>Select a time:</option>
+              <option value="8:00 AM">8:00 AM</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+              <option value="5:00 PM">5:00 PM</option>
+            </select>
+            <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
+              style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
+              <br>
             <span>Opening Hours: Mon–Sat: 9am–7pm; Sun: Holiday</span>
           </div>
           <div class="form-group">

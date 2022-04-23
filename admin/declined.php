@@ -47,10 +47,10 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="index.php" class="nav-link">Pending Appointments</a></li>
-					<li class="nav-item active"><a href="approved.php" class="nav-link">Approved Appointments</a></li>
+					<li class="nav-item"><a href="approved.php" class="nav-link">Approved Appointments</a></li>
 					<li class="nav-item"><a href="completed.php" class="nav-link">Completed Appointments</a></li>
 					<!-- <li class="nav-item"><a href="cancelled.php" class="nav-link">Rescheduled Appointments</a></li> -->
-					<li class="nav-item"><a href="declined.php" class="nav-link">Declined Appointments</a></li>
+					<li class="nav-item active"><a href="declined.php" class="nav-link">Declined Appointments</a></li>
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse" id="ftco-nav">
@@ -74,13 +74,12 @@
 					<th>Date</th>
 					<th>Time</th>
 					<th>Message</th>
-					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 					include('assets/php/config.php');
-					$sql = "SELECT * FROM appointments WHERE `status` = 'approved'";
+					$sql = "SELECT * FROM appointments WHERE `status` = 'Declined'";
 					$res = mysqli_query($con, $sql );
 					$count = 0;
 					while($row=mysqli_fetch_array($res)){
@@ -96,7 +95,6 @@
 							echo "<td>";echo $row["date"];  echo "</td>";
 							echo "<td>";echo $time;  echo "</td>";
 							echo "<td style='width: 50px;'><p class='break-line'>";echo $row["issue"];  echo "</p></td>";
-							echo "<td><button name='complete".$count."' id='complete".$count."' type='submit' class='btn btn-success' value=".$row['ticket'].">Complete</button></td>";
 						echo "</tr>";
 						$count++;
 					}

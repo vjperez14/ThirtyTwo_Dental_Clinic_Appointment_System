@@ -57,7 +57,8 @@ body {
 
 .content {
     width: 1000px;
-    margin: 0 auto;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
 }
 
 .content h2 {
@@ -67,3 +68,4 @@ body {
     border-bottom: 1px solid #ebebeb;
     color: #666666;
 }
+

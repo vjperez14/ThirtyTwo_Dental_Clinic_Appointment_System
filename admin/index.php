@@ -49,7 +49,7 @@
 					<li class="nav-item active"><a href="index.php" class="nav-link">Pending Appointments</a></li>
 					<li class="nav-item"><a href="approved.php" class="nav-link">Approved Appointments</a></li>
 					<li class="nav-item"><a href="completed.php" class="nav-link">Completed Appointments</a></li>
-					<li class="nav-item"><a href="cancelled.php" class="nav-link">Rescheduled Appointments</a></li>
+					<!-- <li class="nav-item"><a href="cancelled.php" class="nav-link">Rescheduled Appointments</a></li> -->
 					<li class="nav-item"><a href="declined.php" class="nav-link">Declined Appointments</a></li>
 				</ul>
 			</div>
@@ -63,7 +63,7 @@
 	</nav>
 	<!-- END nav -->
 	<div class="pending-body">
-		<table id="appttable" class="stripe" >
+		<table id="appttable" class="display compact cell-border" >
 			<thead>
 				<tr>
 					<th>Ticket</th>

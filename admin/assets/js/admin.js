@@ -39,7 +39,6 @@ $(document).ready(function () {
         $("#decline" + i).click(function () {
             var ref = $(this).val();
             var tick = String(ref);
-
             $.ajax({
                 url: './assets/php/setstatus.php',
                 type: 'post',

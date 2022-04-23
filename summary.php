@@ -68,7 +68,7 @@
           <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
           <li class="nav-item"><a href="#company" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li>
+          <!-- <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li> -->
           <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
           <?php
             switch ($isActive) {

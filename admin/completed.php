@@ -49,7 +49,7 @@
 					<li class="nav-item"><a href="index.php" class="nav-link">Pending Appointments</a></li>
 					<li class="nav-item"><a href="approved.php" class="nav-link">Approved Appointments</a></li>
 					<li class="nav-item active "><a href="completed.php" class="nav-link">Completed Appointments</a></li>
-					<li class="nav-item"><a href="cancelled.php" class="nav-link">Rescheduled Appointments</a></li>
+					<!-- <li class="nav-item"><a href="cancelled.php" class="nav-link">Rescheduled Appointments</a></li> -->
 					<li class="nav-item"><a href="declined.php" class="nav-link">Declined Appointments</a></li>
 				</ul>
 			</div>
@@ -63,7 +63,7 @@
 	</nav>
 	<!-- END nav -->
 	<div class="pending-body">
-		<table id="appttable" class="stripe" >
+		<table id="comptable" class="display compact cell-border" >
 			<thead>
 				<tr>
 					<th>Ticket</th>
@@ -151,7 +151,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#appttable').DataTable();
+            $('#comptable').DataTable();
         } );
     </script>
 </body>

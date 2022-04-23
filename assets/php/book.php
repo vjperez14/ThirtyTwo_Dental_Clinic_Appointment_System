@@ -19,7 +19,7 @@
         $date = $_POST['date'];
         $date = date("Y-m-d", strtotime($date));
         $time = $_POST['time'];
-        $time =  date('g:i A', strtotime($time));
+        // $time =  date('g:i A', strtotime($time));
         $issue = $_POST['message'];
         $ticket = base64_encode(random_bytes(10));
 

@@ -1,6 +1,8 @@
 .calendar {
     display: flex;
     flex-flow: column;
+    /* some custom css */
+
 }
 .calendar .header .month-year {
     font-size: 20px;
@@ -77,3 +79,4 @@
     background-color: #f1f2f3;
     cursor: inherit;
 }
+
