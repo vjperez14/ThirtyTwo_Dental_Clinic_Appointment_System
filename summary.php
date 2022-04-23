@@ -56,7 +56,7 @@
 </head>
 
 <body>
-  <nav class="navbar  navbar-expand-lg  navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.php"><img src="assets/img/logos.png" width="200" height="100"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -74,15 +74,15 @@
             switch ($isActive) {
                 case 'value':{
                     ?>
-                      <li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
-                      <li class='nav-item cta'><a href='assets/php/logoutprocess.php' class='nav-link'><span>Logout</span></a></li>
+                      <li class='nav-item '><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
+                      <li class='nav-item '><a href='assets/php/logoutprocess.php' class='nav-link'><span>Logout</span></a></li>
                     <?php
                 break;
                 }
                 default:{
                     ?>
-                      <li class="nav-item cta"><a href="login.php" class="nav-link"><span>Log In</span></a></li>
-                      <li class="nav-item cta"><a href="register.php" class="nav-link"><span>Register</span></a></li>
+                      <li class="nav-item "><a href="login.php" class="nav-link"><span>Log In</span></a></li>
+                      <li class="nav-item "><a href="register.php" class="nav-link"><span>Register</span></a></li>
                     <?php
                 break;
                 } 

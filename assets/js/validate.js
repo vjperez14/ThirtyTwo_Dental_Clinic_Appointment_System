@@ -35,7 +35,7 @@ $(document).ready(function() {
 		// sending ajax request
 		$.ajax({
 
-			url: './php/registration.php',
+			url: './assets/php/registration.php',
 			type: 'post',
 			data: {
 					'firstname' : fname,
@@ -128,7 +128,7 @@ $(document).ready(function() {
 
 		// send ajax request if email is not empty
 		$.ajax({
-				url: './php/registration.php',
+				url: './assets/php/registration.php',
 				type: 'post',
 				data: {
 					'email':email,

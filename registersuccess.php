@@ -5,7 +5,7 @@
   <title>Thirty-two Dental Care Center</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="img/logo.jpg">
+  <link rel="icon" href="assets/img/logos.png">
 
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
