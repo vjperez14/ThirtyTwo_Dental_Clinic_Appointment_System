@@ -60,10 +60,5 @@ function sendVerificationEmail($userEmail) {
     } else {
     echo "Email sent successfully";
     }
-
-
-
 }
-
-
 ?>

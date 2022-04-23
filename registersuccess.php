@@ -45,8 +45,8 @@
           <li class="nav-item"><a href="#company" class="nav-link">About</a></li>
           <!-- <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li> -->
           <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-          <li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
-          <li class='nav-item cta'><a href='logout.php' class='nav-link'><span>Logout</span></a></li>
+          <li class="nav-item cta"><a href="login.php" class="nav-link"><span>Log In</span></a></li>
+          <li class="nav-item cta"><a href="register.php" class="nav-link"><span>Register</span></a></li>
         </ul>
       </div>
     </div>
