@@ -12,7 +12,7 @@
     <title>Thirty-two Dental Care Center</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="assets/img/logo.png">
+    <link rel="icon" href="assets/img/logos.png">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
@@ -361,10 +361,12 @@
         </div>
     </footer>
     <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00" /></svg></div>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+        </svg>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
@@ -379,33 +381,7 @@
     <script src="assets/js/bootstrap-datepicker.js"></script>
     <script src="assets/js/jquery.timepicker.min.js"></script>
     <script src="assets/js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
-    </script>
-    <script src="assets/js/google-map.js"></script>
     <script src="assets/js/main.js"></script>
-    <!-- BEGIN PHP Live! HTML Code [V3] -->
-    <span
-        style="color: #0000FF; text-decoration: underline; line-height: 0px !important; cursor: pointer; position: fixed; bottom: 0px; right: 20px; z-index: 20000000;"
-        id="phplive_btn_1600915952"></span>
-    <script data-cfasync="false" type="text/javascript">
-        (function () {
-            var phplive_e_1600915952 = document.createElement("script");
-            phplive_e_1600915952.type = "text/javascript";
-            phplive_e_1600915952.async = true;
-            phplive_e_1600915952.src = "//pojects.com/phplive/js/phplive_v2.js.php?v=0%7C1600915952%7C0%7C&";
-            document.getElementById("phplive_btn_1600915952").appendChild(phplive_e_1600915952);
-            if ([].filter) {
-                document.getElementById("phplive_btn_1600915952").addEventListener("click", function () {
-                    phplive_launch_chat_0()
-                });
-            } else {
-                document.getElementById("phplive_btn_1600915952").attachEvent("onclick", function () {
-                    phplive_launch_chat_0()
-                });
-            }
-        })();
-    </script>
-    <!-- END PHP Live! HTML Code [V3] -->
 </body>
 
 </html>
