@@ -61,4 +61,5 @@ function sendVerificationEmail($userEmail) {
     echo "Email sent successfully";
     }
 }
+header('location: ../../index.php');
 ?>

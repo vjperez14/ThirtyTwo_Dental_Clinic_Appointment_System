@@ -1,9 +1,13 @@
 <?php
+	require('assets/php/config.php');
+	
 	session_start();
 	if(!$_SESSION['logedin']) {
 		echo "<script>alert('Please login first');</script>";
 		header('Location: login.php');
 	}
+
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +16,7 @@
 	<title>Administrator Access - Thirty-two Dental Care Center</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="../img/logo.jpg">
+	<link rel="icon" href="../assets/img/logos.png">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
@@ -24,7 +28,7 @@
 	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="assets/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="assets/css/aos.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link rel="stylesheet" href="assets/css/ionicons.min.css">
 
@@ -79,13 +83,13 @@
 			</thead>
 			<tbody>
 				<?php
-					include('assets/php/config.php');
 					$sql = "SELECT * FROM appointments WHERE `status` = 'pending'";
 					$res = mysqli_query($con, $sql );
 					$count = 0;
 					while($row=mysqli_fetch_array($res)){
 						$time = $row['time'];
 						$time =  date('g:i A', strtotime($time));
+						$id = $row['apt_id'];
 						
 						echo "<tr>";
 							echo "<td>";echo $row['ticket']; echo "</td>";
@@ -96,9 +100,11 @@
 							echo "<td>";echo $row["date"];  echo "</td>";
 							echo "<td>";echo $time;  echo "</td>";
 							echo "<td style='width: 50px;'><p class='break-line'>";echo $row["issue"];  echo "</p></td>";
-							echo "<td style='text-align: center; width: 50px;'><button name='approve".$count."' id='approve".$count."' type='submit' class='btn form-group btn-success' value=".$row['ticket'].">Approve</button>";
-							echo "<button name='cancel".$count."' id='cancel".$count."' type='submit' class='btn form-group btn-warning' value=".$row['ticket'].">Reschedule</button>";
-							echo "<button name='decline".$count."' id='decline".$count."' type='submit' class='btn  btn-danger' value=".$row['ticket'].">Decline</button></td>";
+							echo "<td style='text-align: center; width: 50px;'>";
+							echo "<button onclick='approve($id)' class='btn form-group btn-success'>Approve</button>";
+							// echo "<button onclick='resched($id)' class='btn form-group btn-warning'>Reschedule</button>";
+							echo "<button onclick='decline($id)' class='btn form-group btn-danger'>Decline</button>";
+							echo "</td>";
 						echo "</tr>";
 						$count++;
 					}
@@ -127,33 +133,13 @@
 		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
 			stroke="#F96D00" /></svg>
 	</div>
-	<script src="assets/js/timepicki.js"></script>
-	<script>
-		$('#timepicker1').timepicki();
-	</script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/jquery.easing.1.3.js"></script>
-	<script src="assets/js/jquery.waypoints.min.js"></script>
-	<script src="assets/js/jquery.stellar.min.js"></script>
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-	<script src="assets/js/aos.js"></script>
-	<script src="assets/js/jquery.animateNumber.min.js"></script>
-	<script src="assets/js/bootstrap-datepicker.js"></script>
-	<script src="assets/js/jquery.timepicker.min.js"></script>
+	
+	<?php require('assets/php/script.php'); ?>
+	
 	<script src="assets/js/scrollax.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="assets/js/google-map.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/admin.js"></script>
-	<script src="assets/js/search.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#appttable').DataTable();
         } );

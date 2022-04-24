@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="assets/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="assets/css/aos.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link rel="stylesheet" href="assets/css/ionicons.min.css">
 
@@ -85,6 +85,7 @@
 					while($row=mysqli_fetch_array($res)){
 						$time = $row['time'];
 						$time =  date('g:i A', strtotime($time));
+
 						
 						echo "<tr>";
 							echo "<td>";echo $row['ticket']; echo "</td>";
@@ -127,11 +128,11 @@
 	<script>
 		$('#timepicker1').timepicki();
 	</script>
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap/bootstrap.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap/bootstrap.min.js"></script>
 	<script src="assets/js/jquery.easing.1.3.js"></script>
 	<script src="assets/js/jquery.waypoints.min.js"></script>
 	<script src="assets/js/jquery.stellar.min.js"></script>
