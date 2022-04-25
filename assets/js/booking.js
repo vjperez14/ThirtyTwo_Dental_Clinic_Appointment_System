@@ -78,6 +78,32 @@ $(document).ready(function () {
 		return 1;
 
 	}
+
+	//  ajax realtime validation of time slots if it is taken
+	$("#time").blur(function() {
+		var time = $('#time').val();
+		var date = $('#date').val();
+		$.ajax({
+				url: './assets/php/book.php',
+				type: 'post',
+				data: {
+					'date':date,
+					'time':time,
+					'time_check':1,
+			},
+			success:function(response) {	
+				// clear span before error message
+				$("#time_error").remove();
+				// adding span after email textbox with error message
+				$("#time").after("<span id='time_error' class='text-danger'>"+response+"</span>");
+			},
+			error:function(e) {
+				$("#result").html("Something went wrong");
+			}
+		});
+	});
+
+
 	// -----------[ Clear span after clicking on inputs] -----------
 
 	$("#username").keyup(function () {

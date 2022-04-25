@@ -6,6 +6,8 @@
   $isActive = isset($_SESSION['email']);
   if($isActive){
     $user = $_SESSION['email'];
+  } else {
+    header("Location: login.php");
   }
   $calendar = new Calendar(date('Y-m-d'));
   //calendar
@@ -212,15 +214,15 @@
           <div class="form-group">
             <select class="form-control" id="time" name="time" style="font-size: 16px;" required>
               <option value="null" disabled selected>Select a time:</option>
-              <option value="8:00 AM">8:00 AM</option>
-              <option value="9:00 AM">9:00 AM</option>
-              <option value="10:00 AM">10:00 AM</option>
-              <option value="11:00 AM">11:00 AM</option>
-              <option value="1:00 PM">1:00 PM</option>
-              <option value="2:00 PM">2:00 PM</option>
-              <option value="3:00 PM">3:00 PM</option>
-              <option value="4:00 PM">4:00 PM</option>
-              <option value="5:00 PM">5:00 PM</option>
+              <option class="appttime" value="8:00 AM">8:00 AM</option>
+              <option class="appttime" value="9:00 AM">9:00 AM</option>
+              <option class="appttime" value="10:00 AM">10:00 AM</option>
+              <option class="appttime" value="11:00 AM">11:00 AM</option>
+              <option class="appttime" value="1:00 PM">1:00 PM</option>
+              <option class="appttime" value="2:00 PM">2:00 PM</option>
+              <option class="appttime" value="3:00 PM">3:00 PM</option>
+              <option class="appttime" value="4:00 PM">4:00 PM</option>
+              <option class="appttime" value="5:00 PM">5:00 PM</option>
             </select>
             <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
               style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
@@ -229,7 +231,7 @@
           </div>
           <div class="form-group">
             <textarea id="message" cols="30" rows="7" class="form-control"
-              placeholder=" Elaborate your Technical Issue/ Concern" name="message" style="font-size: 16px;"></textarea>
+              placeholder=" Elaborate your Technical Issue/ Concern" name="message" style="font-size: 16px;" required></textarea>
           </div>
           <div class="form-group">
             <input id="savebtn" type="submit" name="setapp" value="Set An Appointment"
@@ -320,37 +322,22 @@
     </div>
   </footer>
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+  <div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-        stroke="#F96D00" /></svg></div>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"> </script>
-  <script src="assets/js/timepicki.js"></script>
-  <script>
-    $('#timepicker1').timepicki();
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
-  </script>
-  <script src="assets/js/bootstrap/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="assets/js/jquery.waypoints.min.js"></script>
-  <script src="assets/js/jquery.stellar.min.js"></script>
-  <script src="assets/js/owl.carousel.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/aos.js"></script>
-  <script src="assets/js/jquery.animateNumber.min.js"></script>
-  <script src="assets/js/bootstrap-datepicker.js"></script>
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg>
+  </div>
+  <?php require("assets/php/script.php") ?>
+
   <script src="assets/js/scrollax.min.js"></script>
-  <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
-  
   <script src="assets/js/booking.js"></script>
+
+  <script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("date")[0].setAttribute('min', today);
+  </script>
   
 </body>
 

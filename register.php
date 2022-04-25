@@ -215,6 +215,9 @@
         </div>
     </div>
     <?php include('assets/php/script.php'); ?>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/validate.js"></script>
 </body>
 
 </html>
