@@ -15,6 +15,8 @@
     <link rel="icon" href="assets/img/logos.png">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -46,7 +48,7 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
-            <div class="collapse navbar-collapse" id="ftco-nav">
+            <div class="collapse navbar-collapse dropdown" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
@@ -58,6 +60,13 @@
                             case 'value':{
                                 ?>
                                     <li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
+                                    <li class="nav-item dropdown" >
+                                        <a class="nav-link" href="#" data-bs-toggle="dropdown">
+                                            <span class="label label-pill text-danger count" style="border-radius:10px;"></span>
+                                            <i class="fas fa-bell" style="font-size:18px;"></i>
+                                            <!-- <div class="dropdown-menu" style="padding-left:5px;width:300px;"></div> -->
+                                        </a>
+                                    </li>
                                     <li class='nav-item cta'><a href='assets/php/logoutprocess.php' class='nav-link'><span>Logout</span></a></li>
                                 <?php
                             break;
@@ -372,6 +381,7 @@
     <script src="assets/js/scrollax.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/validate.js"></script>
+    <script src="assets/js/notification.js"></script>
 </body>
 
 </html>

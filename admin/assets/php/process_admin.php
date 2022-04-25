@@ -6,7 +6,7 @@
 
     if(isset($_GET['apt_id']) && $_GET['event'] == 'approve') {
         $id = $_GET['apt_id'];
-        $decline = mysqli_query($con, "UPDATE appointments SET `status` = 'approved' WHERE `apt_id` = '$id'");
+        $decline = mysqli_query($con, "UPDATE appointments SET `status` = 'approved', `notif_status` = 0 WHERE `apt_id` = '$id'");
         $sqlGetEmail = "SELECT email FROM appointments WHERE apt_id = '$id'";
         $res = $con->query($sqlGetEmail);
         while($row=mysqli_fetch_array($res)) {

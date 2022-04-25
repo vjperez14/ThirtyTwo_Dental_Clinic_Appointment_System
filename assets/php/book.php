@@ -72,7 +72,7 @@
         $issue = $_POST['message'];
         $ticket = base64_encode(random_bytes(10));
 
-        $sql = "INSERT INTO appointments (requestee, name, phone, email, address, service, date, time, issue, ticket, status) VALUES ($fk_id,'$name', $phone, '$email', '$address', '$service', '$date', '$time', '$issue', '$ticket', 'pending') ";
+        $sql = "INSERT INTO appointments (requestee, name, phone, email, address, service, date, time, issue, ticket, status, notif_status) VALUES ($fk_id,'$name', $phone, '$email', '$address', '$service', '$date', '$time', '$issue', '$ticket', 'pending', 1) ";
         $result = $con->query($sql);
 
         if($result) {
