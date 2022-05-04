@@ -40,13 +40,13 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="#company" class="nav-link">About</a></li>
+          <li class="nav-item active"><a href="index" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index#services" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="index#company" class="nav-link">About</a></li>
           <!-- <li class="nav-item"><a href="shedule.php" class="nav-link">Shedule</a></li> -->
-          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-          <li class="nav-item cta"><a href="login.php" class="nav-link"><span>Log In</span></a></li>
-          <li class="nav-item cta"><a href="register.php" class="nav-link"><span>Register</span></a></li>
+          <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+          <li class="nav-item cta"><a href="login" class="nav-link"><span>Log In</span></a></li>
+          <li class="nav-item cta"><a href="register" class="nav-link"><span>Register</span></a></li>
         </ul>
       </div>
     </div>

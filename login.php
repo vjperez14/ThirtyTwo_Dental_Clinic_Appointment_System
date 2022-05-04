@@ -54,15 +54,15 @@
                         switch ($isActive) {
                             case 'value':{
                                 ?>
-                                    <li class='nav-item cta'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
+                                    <li class='nav-item cta'><a href='myaccount' class='nav-link'><span>My Account</span></a></li>
                                     <li class='nav-item cta'><a href='assets/php/logoutprocess.php' class='nav-link'><span>Logout</span></a></li> 
                                 <?php
                             break;
                             }
                             default:{
                                 ?>
-                                    <li class="nav-item active"><a href="login.php" class="nav-link"><span>Log In</span></a></li>
-                                    <li class="nav-item"><a href="register.php" class="nav-link"><span>Register</span></a></li>
+                                    <li class="nav-item active"><a href="login" class="nav-link"><span>Log In</span></a></li>
+                                    <li class="nav-item"><a href="register" class="nav-link"><span>Register</span></a></li>
                                 <?php
                             break;
                             } 
