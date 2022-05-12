@@ -107,7 +107,7 @@
             </div>
           </div>
           <div class="col-md-3 ftco-animate">
-            <p class="mb-0"><a href="appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
+            <p class="mb-0"><a href="../appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
             </p>
           </div>
         </div>
