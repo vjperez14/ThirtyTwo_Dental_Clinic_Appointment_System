@@ -9,21 +9,22 @@ require '../vendor/PHPMailerMaster/PHPMailer-master/src/SMTP.php';
 function sendResetPasswordEmail($userEmail, $token) {
     
     $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->Mailer = "smtp";
-
-    $mail->SMTPDebug  = 1;  
-    $mail->SMTPAuth   = TRUE;
-    $mail->SMTPSecure = "tls";
-    $mail->Port       = 587;
-    $mail->Host       = "smtp.gmail.com";
-    $mail->Username   = "thirtytwodentalclinic32@gmail.com";
-    $mail->Password   = "dummyaccount";
+    $mail->IsSMTP(); // telling the class to use SMTP
+    $mail->Host       = "thirtytwodentalclinic.com"; // SMTP server
+    $mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+                                        // 1 = errors and messages
+                                        // 2 = messages only
+    $mail->SMTPAuth   = "true";                  // enable SMTP authentication
+    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+    $mail->Host       = "thirtytwodentalclinic.com";      // sets GMAIL as the SMTP server
+    $mail->Port       = 465; 
+    $mail->Username   = "no-reply@thirtytwodentalclinic.com";
+    $mail->Password   = "Dontreply.1";
 
     $mail->IsHTML(true);
-    $mail->setFrom('thirtytwodentalclinic32@gmail.com', 'Thirtytwo Dental Clinic');
+    $mail->setFrom('no-reply@thirtytwodentalclinic.com', 'ThirtyTwoDentalClinic');
     $mail->AddAddress($userEmail);
-    $mail->Subject = "Email Verification";
+    $mail->Subject = "Change Password";
     $content =  '<!DOCTYPE html>
     <html lang="en">
 
@@ -58,7 +59,7 @@ function sendResetPasswordEmail($userEmail, $token) {
     var_dump($mail);
     } else {
         echo "<script type='text/javascript'>";
-        echo "window.location = '../login.php'";
+        echo "window.location = '../../login.php'";
         echo "</script>";
     }
 }

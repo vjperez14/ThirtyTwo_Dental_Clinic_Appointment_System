@@ -119,8 +119,8 @@
             <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
             <p>We Are A Certified Dental Clinic You Can Trust</p>
             <ul class="ftco-footer-social list-unstyled mb-0">
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
             </ul>
           </div>
         </div>

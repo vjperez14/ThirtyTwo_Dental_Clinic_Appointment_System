@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 	// form autocomplete off		
 	$(":input").attr('autocomplete', 'off');
@@ -9,14 +9,14 @@ $(document).ready(function() {
 
 
 	// save button click function
-	$("#savebtn").click(function() {
+	$("#savebtn").click(function () {
 
 		// calling validate function
-		var response =  validateForm();
-		
+		var response = validateForm();
+
 		// alert("test");
 		// if form validation fails			
-		if(response == 0) {
+		if (response == 0) {
 			return;
 		} else {
 			window.location.href = "registersuccess.php";
@@ -24,12 +24,12 @@ $(document).ready(function() {
 
 
 		// getting all form data
-		var fname     =   $("#firstname").val();
-		var lname      =   $("#lastname").val();
-		var email  =   $("#registeremail").val();
+		var fname = $("#firstname").val();
+		var lname = $("#lastname").val();
+		var email = $("#registeremail").val();
 		var password = $("#registerpassword").val();
 		var phonenumber = $("#phonenumber").val();
-		
+
 
 
 		// sending ajax request
@@ -38,21 +38,21 @@ $(document).ready(function() {
 			url: './assets/php/registration.php',
 			type: 'post',
 			data: {
-					'firstname' : fname,
-					'lastname' : lname,
-					'registeremail' : email,
-					'registerpassword' : password,
-					'phonenumber' : phonenumber,
-					'save' : 1
-				},
+				'firstname': fname,
+				'lastname': lname,
+				'registeremail': email,
+				'registerpassword': password,
+				'phonenumber': phonenumber,
+				'save': 1
+			},
 
 			// before ajax request
-			beforeSend: function() {
+			beforeSend: function () {
 				$("#result").html("<p class='text-success'> Please wait.. </p>");
-			},	
+			},
 
 			// on success response
-			success:function(response) {
+			success: function (response) {
 				$("#result").html(response);
 
 				// reset form fields
@@ -60,7 +60,7 @@ $(document).ready(function() {
 			},
 
 			// error response
-			error:function(e) {
+			error: function (e) {
 				$("#result").html("Some error encountered.");
 			}
 
@@ -70,14 +70,14 @@ $(document).ready(function() {
 
 
 
-// ------------- form validation -----------------
+	// ------------- form validation -----------------
 
 	function validateForm() {
 
 		// removing span text before message
 		$("#error").remove();
 
-		if($("#firstname").val() == "") {
+		if ($("#firstname").val() == "") {
 			$("#firstname").after("<span id='error' class='text-danger'>Enter your First Name</span>");
 			return 0;
 		}
@@ -89,22 +89,22 @@ $(document).ready(function() {
 
 
 		// validating input if empty
-		if($("#registeremail").val() == "") {
+		if ($("#registeremail").val() == "") {
 			$("#registeremail").after("<span id='error' class='text-danger'> Enter your email </span>");
 			return 0;
 		}
 
-		if($("#registerpassword").val() == "") {
+		if ($("#registerpassword").val() == "") {
 			$("#registerpassword").after("<span id='error' class='text-danger'> Enter your password </span>");
 			return 0;
 		}
 
-		if($("#confirmpassword").val() == "") {
+		if ($("#confirmpassword").val() == "") {
 			$("#confirmpassword").after("<span id='error' class='text-danger'> Re-enter your password </span>");
 			return 0;
 		}
 
-		if($("#confirmpassword").val() != $("#registerpassword").val()) {
+		if ($("#confirmpassword").val() != $("#registerpassword").val()) {
 			$("#confirmpassword").after("<span id='error' class='text-danger'> Password not matched! </span>");
 			return 0;
 		}
@@ -114,60 +114,57 @@ $(document).ready(function() {
 	}
 
 
-// ------------------- [ Email blur function ] -----------------
+	// ------------------- [ Email blur function ] -----------------
 
-	$("#registeremail").blur(function() {
+	$("#registeremail").blur(function () {
 
-		var email  		= 		$('#registeremail').val();
+		var email = $('#registeremail').val();
 
 		// if email is empty then return
-		if(email == "") {
+		if (email == "") {
 			return;
 		}
 
 
 		// send ajax request if email is not empty
 		$.ajax({
-				url: './assets/php/registration.php',
-				type: 'post',
-				data: {
-					'email':email,
-					'email_check':1,
+			url: './assets/php/registration.php',
+			type: 'post',
+			data: {
+				'email': email,
+				'email_check': 1,
 			},
-
-			success:function(response) {	
-
+			success: function (response) {
 				// clear span before error message
 				$("#registeremail_error").remove();
-
 				// adding span after email textbox with error message
-				$("#registeremail").after("<span id='email_error' class='text-danger'>"+response+"</span>");
+				$("#registeremail").after("<span id='email_error' class='text-danger'>" + response + "</span>");
 			},
 
-			error:function(e) {
+			error: function (e) {
 				$("#result").html("Something went wrong");
 			}
 
 		});
 	});
-// -----------[ Clear span after clicking on inputs] -----------
+	// -----------[ Clear span after clicking on inputs] -----------
 
-$("#username").keyup(function() {
-	$("#error").remove();
-});
+	$("#username").keyup(function () {
+		$("#error").remove();
+	});
 
 
-$("#registeremail").keyup(function() {
-	$("#error").remove();
-	$("span#email_error").remove();
-});
+	$("#registeremail").keyup(function () {
+		$("#error").remove();
+		$("span#email_error").remove();
+	});
 
-$("#registerpassword").keyup(function() {
-	$("#error").remove();
-});
+	$("#registerpassword").keyup(function () {
+		$("#error").remove();
+	});
 
-$("#confirmpassword").keyup(function() {
-	$("#error").remove();
-});
+	$("#confirmpassword").keyup(function () {
+		$("#error").remove();
+	});
 
 }); 

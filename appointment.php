@@ -1,8 +1,9 @@
 <?php
   include 'assets/php/config.php';
   include 'assets/php/calendar.php';
-  session_start();
   include("assets/php/info.php");
+  // session_start();
+  
   $isActive = isset($_SESSION['email']);
   if($isActive){
     $user = $_SESSION['email'];
@@ -113,6 +114,37 @@
     </style>
 </head>
 <body>
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Chat Plugin code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "115139194518992");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+
+  <!-- Your SDK code -->
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        xfbml: true,
+        version: 'v13.0'
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <nav class="navbar  navbar-expand-lg  navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.php"><img src="assets/img/logos.png" width="200" height="100"></a>
@@ -201,7 +233,7 @@
               <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
               <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
               <option value="DENTURES">DENTURES </option>
-              <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
+              <option value="TOOTH EXTRACTION">TOOTH EXTRACTION</option>
               <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
             </select>
           </div>
@@ -222,6 +254,7 @@
               <option class="appttime" value="4:00 PM">4:00 PM</option>
               <option class="appttime" value="5:00 PM">5:00 PM</option>
             </select>
+            <span id="recommended" style="color: green;">The earliest time you can avail at this time</span>
             <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
               style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
               <br>
@@ -229,7 +262,7 @@
           </div>
           <div class="form-group">
             <textarea id="message" cols="30" rows="7" class="form-control"
-              placeholder=" Elaborate your Technical Issue/ Concern" name="message" style="font-size: 16px;" required></textarea>
+              placeholder=" Elaborate your Concern" name="message" style="font-size: 16px;" required></textarea>
           </div>
           <div class="form-group">
             <input id="savebtn" type="submit" name="setapp" value="Set An Appointment"
@@ -262,8 +295,8 @@
             <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
             <p>We Are A Certified Dental Clinic You Can Trust</p>
             <ul class="ftco-footer-social list-unstyled mb-0">
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
             </ul>
           </div>
         </div>
@@ -327,10 +360,10 @@
     </svg>
   </div>
   <?php require("assets/php/script.php") ?>
-
   <script src="assets/js/scrollax.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/booking.js"></script>
+  <script src="assets/js/recommend.js"></script>
 
   <script>
     var today = new Date().toISOString().split('T')[0];

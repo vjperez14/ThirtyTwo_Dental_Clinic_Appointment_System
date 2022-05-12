@@ -1,4 +1,5 @@
 <?php
+  include('assets/php/config.php');
   session_start();
   $isActive = isset($_SESSION['email']);
   if($isActive){
@@ -42,6 +43,37 @@
 
 </head>
 <body>
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Chat Plugin code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "115139194518992");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+
+  <!-- Your SDK code -->
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        xfbml: true,
+        version: 'v13.0'
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <nav class="navbar  navbar-expand-lg  navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.php"><img src="assets/img/logos.png" width="200" height="100"></a>
@@ -86,7 +118,7 @@
         <div class="col-md-7 text-left heading-section ftco-animate">
           <span class="subheading1">Hi there!</span>
           <?php
-            include('assets/php/config.php');
+            
             $sql = "SELECT * FROM registered_accounts WHERE email = '" .$_SESSION['email']. "'";
             $res = mysqli_query($con, $sql );
             if(! $res ) {
@@ -135,7 +167,6 @@
                         <th>Actions</th>
                       </tr>
                       <?php
-                        include('assets/php/config.php');
                         $sql = "SELECT * FROM appointments WHERE email = '" .$_SESSION['email']. "' ORDER BY date ASC";
                         $res = mysqli_query($con, $sql );
                         if(! $res ) {
@@ -149,7 +180,7 @@
                             
                             if ($row['status'] == 'completed') {
                               $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Completed</button>";
-                              $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i> Evaluate the Technician";
+                              $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
                             } else if ($row['status'] == 'servicing') {
                               $status = "<button type='button' class='btn btn-secondary' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment.'>For Servicing</button>";
                               $action = "<i class='fa fa-eye' aria-hidden='true'></i> View Details";
@@ -161,7 +192,7 @@
                               // $action = "<div id='paypal-button'></div>";
                             } else if ($row['status'] == 'pending') {
                               $status = "<button type='button' name='paypal-button' class='btn btn-warning' data-title='Your appointment is still being reviewed. Kindly wait for our confirmation email.'>For Approval</button>";
-                              $action = "<i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment";
+                              $action = "<a href=#><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
                             } else if ($row['status'] == "declined") {
                               $status = "<button type='button' class='btn btn-danger' data-title='Your appointment has been declined. Click on 'View Details' to know more.'>Declined</button>";
                               $action = "<i class='fa fa-eye' aria-hidden='true'></i> View Details";
@@ -189,30 +220,38 @@
               aria-labelledby="v-pills-performance-tab">
               <div class="d-md-flex">
                 <div class="one-forth align-self-center">
-
                 </div>
                 <div class="one-half order-first mr-md-5 align-self-center">
+                  <?php
+                    $infosql = "SELECT * FROM registered_accounts WHERE email = '" .$_SESSION['email']. "'";
+                    $inforesults = mysqli_query($con, $infosql);
+                    while($row=mysqli_fetch_array($inforesults)) {
+                      $firstname = $row['firstname'];
+                      $lastname = $row['lastname'];
+                      $email = $row['email'];
+                      $phone = "0".$row['phone'];                    
+                  ?>
                   <form name="form1" method="post" enctype="multipart/form-data">
                     <div class="row1">
                       <div class="column1">
                         <div class="form-group">
-                          <input type="text" name="firstname" id="firstname" class="form-control" required>First Name*
+                          <input type="text" name="firstname" id="firstname" class="form-control" value="<?php echo $firstname ?>" required>First Name*
                         </div>
                       </div>
                       <div class="column1">
                         <div class="form-group">
-                          <input type="text" name="lastname" id="lastname" class="form-control" required>Last Name*
+                          <input type="text" name="lastname" id="lastname" class="form-control" value="<?php echo $lastname ?>" required>Last Name*
                         </div>
                       </div>
                     </div>
                     <div class="form-group">
                       <input type="text" name="email" id="email" class="form-control"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Kindly follow the format (example@email.com)" required>Email Address*
+                        title="Kindly follow the format (example@email.com)" value="<?php echo $email ?>" required>Email Address*
                     </div>
                     <div class="form-group">
                       <input type="text" name="phone" onkeypress="validate(event)" pattern=".{10,}"
-                        title="Valid phone number format: XXX-XXX-XXXX" id="phone" class="form-control" required>Phone
+                        title="Valid phone number format: XXX-XXX-XXXX" id="phone" class="form-control" value="<?php echo $phone ?>" required>Phone
                       Number*
                     </div>
                     <script>
@@ -231,10 +270,9 @@
                         }
                       }
                     </script>
-                    <div class="form-group">
-                      <input type="password" name="pass" id="pass" class="form-control" pattern=".{8,}"
-                        title="Your password must contain eight (8) or more characters." required>Password*
-                    </div>
+                  <?php
+                    }
+                  ?>
                   </form>
                   <br>
                   <p><a href="#" class="btn btn-secondary py-3">Save Changes</a></p>
@@ -290,8 +328,8 @@
             <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
             <p>We Are A Certified Dental Clinic You Can Trust</p>
             <ul class="ftco-footer-social list-unstyled mb-0">
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
             </ul>
           </div>
         </div>

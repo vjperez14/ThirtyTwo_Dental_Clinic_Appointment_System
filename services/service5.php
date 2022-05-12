@@ -82,10 +82,9 @@
         <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
           <div class="text mt-5">
             <span class="subheading">SERVICES</span>
-            <h1 class="mb-3"><span>JACKET CROWN OR FIXED BRIDGE</span></h1>
-            <p class="mb-0">Surface/area of each tooth ₱6,500</p>
-            <p class="mb-0">Additional surface/area of each tooth ₱8,500</p>
-            <p class="mb-0">Price is depends how big the aree of the tooth will restore</p>
+            <h1 class="mb-3"><span>TOOTH EXTRACTION</span></h1>
+            <p class="mb-0">Third molar/wisdom tooth ₱2000</p>
+            <p class="mb-0">Impacted tooth or surgery pocedure ₱7,500 up</p>
             <p class="mb-0">**additional charges for infection control and check up**</p>
           </div>
         </div>
@@ -118,8 +117,8 @@
             <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
             <p>We Are A Certified Dental Clinic You Can Trust</p>
             <ul class="ftco-footer-social list-unstyled mb-0">
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
             </ul>
           </div>
         </div>

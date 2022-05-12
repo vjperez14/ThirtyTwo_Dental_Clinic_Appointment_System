@@ -34,6 +34,17 @@
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/icomoon.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .msg {
+	margin: 5px auto;
+	border-radius: 5px;
+	border: 1px solid red;
+	background: pink;
+	text-align: left;
+	color: brown;
+	padding: 10px;
+}
+    </style>
 </head>
 
 <body>
@@ -91,7 +102,7 @@
                             }
                             default:{
                                 ?>
-                                    <li class="nav-item active"><a href="login" class="nav-link"><span>Log In</span></a></li>
+                                    <li class="nav-item"><a href="login" class="nav-link"><span>Log In</span></a></li>
                                     <li class="nav-item"><a href="register" class="nav-link"><span>Register</span></a></li>
                                 <?php
                             break;
@@ -110,35 +121,32 @@
                 <img class="one-half js-fullheight align-self-end order-md-last img-fluid" src="assets/img/teeth1.png" alt="">
                 <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
                     <div class="text mt-5">
-                        <span class="subheading">JOIN THE PARTY</span>
-                        <h1 class="mb-3" style="font-size: 30px;"><span>Log In to your Thirty-two Dental Account</span>
+                        <!-- <span class="subheading">JOIN THE PARTY</span> -->
+                        <h1 class="mb-3" style="font-size: 30px;"><span>Enter New Password</span>
                         </h1>
-                        <form name="form1" method="post" action="assets/php/loginprocess.php">
+                        <form name="form1" method="post" action="assets/php/reset_password_logic.php">
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control" placeholder=""
-                                    required>Email
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" placeholder=""
+                                <input type="password" name="new_pass" id="new_pass" class="form-control" placeholder=""
                                     required>Password
                             </div>
                             <div class="form-group">
+                                <input type="password" name="new_pass_c" id="new_pass_c" class="form-control" placeholder=""
+                                    required>Confirm Password
+                            </div>
+                            <div class="form-group">
                                 <?php
-                                    if(isset($_SESSION["error"])) {
-                                        $error = $_SESSION["error"];
+                                    if(isset($_SESSION["new_password_error"])) {
+                                        $error = $_SESSION["new_password_error"];
                                         echo "<span style='color:red;'>$error</span>";
                                     }
                                 ?>
                             </div>
                             <div class="col-md-4 ftco-animate" style="margin-left: -5%;">
-                                <input type="submit" id="login" name="login" value="Log In"
+                                <input type="submit" id="new_password" name="new_password" value="Submit"
                                     class="btn btn-secondary py-3 px-4">
                             </div>
                         </form>
                         <br>
-                        <p> Forgot your Password? <a href="" data-toggle="modal" data-target="#exampleModalCenter">Click
-                                here</a>
-                            <p> Not a Thirty-two Dental member yet? <a href="register.php">Click here</a></p>
                     </div>
                 </div>
             </div>
@@ -229,32 +237,6 @@
             </div>
         </div>
     </footer>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Reset Your Password</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="assets/php/reset_password_logic.php" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Your email address</label>
-                            <input class="form-control" type="email" name="email">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" name="reset-password" value="Submit">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

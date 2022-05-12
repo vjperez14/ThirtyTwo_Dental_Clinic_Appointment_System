@@ -41,6 +41,37 @@
 </head>
 
 <body>
+    <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "115139194518992");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v13.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <nav class="navbar  navbar-expand-lg  navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php"><img src="assets/img/logos.png" width="200" height="100"></a>
@@ -85,44 +116,39 @@
         </div>
     </nav>
     <!-- END nav -->
-    <div class="container-fluid p-0">
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="bd-example">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="assets/img/slides/slides2.png" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome to Thirty-two Dental
-                                Care Center</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Take The Best Quality Dental
-                                Treatment</h1>
-                            <a href="appointment.php"
-                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Appointment</a>
-                            <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                        </div>
+                    <img src="assets/img/slides/slides1.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h5 class="h5-carousel-caption animated slideInDown">Welcome to Thirty-two Dental Care Center</h5>
+                        <h1 class="h1-carousel-caption animated zoomIn">Take The Best <br> Quality Dental <br> Treatment</h1>
+                        <a href="appointment" class="btn btn-lg btn-primary animated slideInUp">Set an appointment now!</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="assets/img/slides/slides1.png" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Keep Your Teeth Healthy</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Take The Best Quality Dental
-                                Treatment</h1>
-                            <a href="appointment.php" class="btn btn-secondary px-4 py-3">Set An Appointment</a>
-                            <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                        </div>
+                    <img src="assets/img/slides/slides3.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="h5-carousel-caption">Keep Your Teeth Healthy</h5>
+                        <h1 class="h1-carousel-caption ">Take The Best <br> Quality Dental <br> Treatment</h1>
+                        <a href="appointment" class="btn btn-lg btn-primary animated slideInUp">Set an appointment now!</a>
+                        
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev bg-transparent" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="prev" style="padding: 0 !important;margin: 0 !important;border: 0 !important;">
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-            <button class="carousel-control-next bg-transparent" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="next" style="padding: 0 !important;margin: 0 !important;border: 0 !important;">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
     <section class="ftco-section services-section bg-light" id="services">
@@ -309,8 +335,8 @@
                         <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
                         <p>We Are A Certified Dental Clinic You Can Trust</p>
                         <ul class="ftco-footer-social list-unstyled mb-0">
-                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
                         </ul>
                     </div>
                 </div>

@@ -15,3 +15,15 @@
     color: #007bff;
 }
 
+.carousel-caption {
+    padding-top: 9%;
+}
+
+.h5-carousel-caption {
+    color: white;
+}
+
+.h1-carousel-caption {
+    color: white;
+    font-size: 70px;
+}
