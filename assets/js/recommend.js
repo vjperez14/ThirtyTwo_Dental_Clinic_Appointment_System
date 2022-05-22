@@ -18,9 +18,9 @@ $(document).ready(function () {
             data: {
                 view: view
             },
-            dataType: 'JSON',
+            dataType: 'HTML',
             success: function(response){
-                $("#recommended").text("Earliest possible time you can avail: "+response);
+                $("#recommended").html("Earliest possible time you can avail: "+response);
             }
         });
 

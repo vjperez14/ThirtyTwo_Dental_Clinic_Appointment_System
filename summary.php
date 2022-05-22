@@ -1,6 +1,6 @@
 <!--Change this area po. Kung ano man need ayusin like name nung database and so on-->
 <?php
-  session_start();
+  // session_start();
   include("assets/php/info.php");
   $isActive = isset($_SESSION['email']);
   if($isActive){
@@ -148,7 +148,7 @@
                   echo "Dear "; echo $row['name']; echo",<br>";
                   echo "Your appointment is now being processed.<br>Here is the summary of your appointment:<br><br>";
                   echo "<b>Full Name: "; echo $row['name']; echo "<br>";
-                  echo "Contact Number: "; echo $row['phone']; echo "<br>"; 
+                  echo "Contact Number: "; echo "0".$row['phone']; echo "<br>"; 
                   echo "Email Address: "; echo $row['email']; echo "<br>"; 
                   echo "Service Availed: "; echo $row['service']; echo "<br>"; 
                   echo "Date and Time: "; echo $row['date']; echo " at "; echo $time; echo "<br>";

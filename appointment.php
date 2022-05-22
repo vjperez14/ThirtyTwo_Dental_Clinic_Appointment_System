@@ -10,30 +10,30 @@
   } else {
     header("Location: login.php");
   }
-  $calendar = new Calendar(date('Y-m-d'));
-  //calendar
-  $sql = "SELECT time, date FROM appointments GROUP BY time HAVING COUNT(*) >= 1 ORDER BY apt_id ASC;";
-  $result = mysqli_query($con, $sql);
-  while($row=mysqli_fetch_array($result)){
+  // $calendar = new Calendar(date('Y-m-d'));
+  // //calendar
+  // $sql = "SELECT time, date FROM appointments GROUP BY time HAVING COUNT(*) >= 1 ORDER BY apt_id ASC;";
+  // $result = mysqli_query($con, $sql);
+  // while($row=mysqli_fetch_array($result)){
 
-    $time = $row['time'];
-    // $time =  date('g:i A', strtotime($time));
-    $date = $row['date'];
+  //   $time = $row['time'];
+  //   // $time =  date('g:i A', strtotime($time));
+  //   $date = $row['date'];
 
-    // $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments GROUP BY `time`";
-    $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments WHERE `time` = '$time'";
-    $resultTime = mysqli_query($con, $sqlCount);
-    $data = mysqli_fetch_assoc($resultTime);
-    $count = $data['count'];
+  //   // $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments GROUP BY `time`";
+  //   $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments WHERE `time` = '$time'";
+  //   $resultTime = mysqli_query($con, $sqlCount);
+  //   $data = mysqli_fetch_assoc($resultTime);
+  //   $count = $data['count'];
 
-    if ($count == '1') {
-      $calendar->add_event($time, $date, 1, 'green');
-    } elseif ($count == '2') {
-      $calendar->add_event($time, $date, 1, 'yellow');
-    } elseif ($count == '3') {
-      $calendar->add_event($time, $date, 1, 'red');
-    }
-  }
+  //   if ($count == '1') {
+  //     $calendar->add_event($time, $date, 1, 'green');
+  //   } elseif ($count == '2') {
+  //     $calendar->add_event($time, $date, 1, 'yellow');
+  //   } elseif ($count == '3') {
+  //     $calendar->add_event($time, $date, 1, 'red');
+  //   }
+  // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -184,18 +184,19 @@
   <!-- END nav -->
   <div class="d-md-flex">
     <div class="content home calendar-ml">
-        <?=$calendar?>
-        <br>
+      <div id="time-container" style="margin-top:25%;">
+        <h3 class="text-center">Please Select a date...</h3>
+      </div>
     </div>
     <div class="one-forth ml-md-5 align-self-center">
       <br>
       <div class="text mt-5">
         <span class="subheading1">WE ARE MORE THAN GLAD TO HELP YOU</span>
         <h1 class="mb-3" style="font-size: 30px;"><b><span>Set An Appointment</span></b></h1>
-        <form action="assets/php/book.php" name="form2" method="POST" enctype="multipart/form-data">
+        <!-- <form action="assets/php/book.php" name="form2" method="POST" enctype="multipart/form-data"> -->
           <div class="form-group">
             <input type="text" id="name" class="form-control" placeholder="Full Name" name="name"
-              style="font-size: 16px;" required>
+              style="font-size: 16px;" readonly>
           </div>
           <div class="form-group">
             <input type="text" id="phone" class="form-control" placeholder=" Phone" onkeypress="validate(event)"
@@ -221,7 +222,7 @@
           <div class="form-group">
             <input type="text" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               title="Kindly follow the format (example@email.com)" placeholder=" Email" name="email"
-              style="font-size: 16px;">
+              style="font-size: 16px;" readonly>
           </div>
           <div class="form-group">
             <input type="text" id="address" class="form-control" placeholder=" Home Address" name="address"
@@ -238,37 +239,37 @@
             </select>
           </div>
           <div class="form-group">
-            <input type="date" id="date" placeholder=" Date of Appointment" name="date"
+            <input type="date" class="form-control" id="date" placeholder=" Date of Appointment" name="date"
               style="padding: 10px; padding-right: 341px;" required>
           </div>
           <div class="form-group">
             <select class="form-control" id="time" name="time" style="font-size: 16px;" required>
               <option value="null" disabled selected>Select a time:</option>
-              <option class="appttime" value="8:00 AM">8:00 AM</option>
-              <option class="appttime" value="9:00 AM">9:00 AM</option>
-              <option class="appttime" value="10:00 AM">10:00 AM</option>
-              <option class="appttime" value="11:00 AM">11:00 AM</option>
-              <option class="appttime" value="1:00 PM">1:00 PM</option>
-              <option class="appttime" value="2:00 PM">2:00 PM</option>
-              <option class="appttime" value="3:00 PM">3:00 PM</option>
-              <option class="appttime" value="4:00 PM">4:00 PM</option>
-              <option class="appttime" value="5:00 PM">5:00 PM</option>
+              <option class="appttime" value="8:00 AM">8:00 AM - 9:00 AM</option>
+              <option class="appttime" value="9:00 AM">9:00 AM - 10:00 AM</option>
+              <option class="appttime" value="10:00 AM">10:00 AM - 11:00 AM</option>
+              <option class="appttime" value="11:00 AM">11:00 AM - 12:00 AM</option>
+              <option class="appttime" value="1:00 PM">1:00 PM - 2:00 PM</option>
+              <option class="appttime" value="2:00 PM">2:00 PM - 3:00 PM</option>
+              <option class="appttime" value="3:00 PM">3:00 PM - 4:00 PM</option>
+              <option class="appttime" value="4:00 PM">4:00 PM - 5:00 PM</option>
             </select>
             <span id="recommended" style="color: green;">The earliest time you can avail at this time</span>
             <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
               style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
               <br>
-            <span>Opening Hours: Mon–Sat: 9am–7pm; Sun: Holiday</span>
+            <span>Opening Hours: Mon–Sat: 8:00 AM – 5:00 PM; Sun: Holiday</span>
           </div>
           <div class="form-group">
             <textarea id="message" cols="30" rows="7" class="form-control"
               placeholder=" Elaborate your Concern" name="message" style="font-size: 16px;" required></textarea>
           </div>
           <div class="form-group">
-            <input id="savebtn" type="submit" name="setapp" value="Set An Appointment"
-              class="btn btn-secondary py-3 px-5">
+            <button type="submit" class="btn btn-secondary" id="setapt" name="setapt">Set An Appointment</button>
+            <!-- <input id="savebtn" type="submit" name="setapp" value="Set An Appointment"
+              class="btn btn-secondary py-3 px-5"> -->
           </div>
-        </form>
+        <!-- </form> -->
       </div><br><br>
     </div>
   </div>
@@ -283,7 +284,6 @@
         </div>
         <div class="col-md-3 ftco-animate">
           <div class="price">
-
           </div>
         </div>
       </div>
@@ -364,6 +364,7 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/booking.js"></script>
   <script src="assets/js/recommend.js"></script>
+  
 
   <script>
     var today = new Date().toISOString().split('T')[0];

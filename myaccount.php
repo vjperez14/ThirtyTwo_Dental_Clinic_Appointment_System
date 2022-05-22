@@ -16,7 +16,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="img/logo.jpg">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="order-first" style="margin-left: -20%;">
                   <form method="POST" id="dashboard-data" enctype="multipart/form-data">
-                    <table>
+                    <table id="list-appt">
                       <tr>
                         <th>Appointment</th>
                         <th>Appointment Ticket</th>
@@ -177,31 +177,23 @@
                           while($row=mysqli_fetch_array($res)){
                             $time = $row['time'];
                             $time =  date('g:i A', strtotime($time));
-                            
+                            $id = $row['apt_id'];
+
                             if ($row['status'] == 'completed') {
                               $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Completed</button>";
                               $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
-                            } else if ($row['status'] == 'servicing') {
-                              $status = "<button type='button' class='btn btn-secondary' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment.'>For Servicing</button>";
-                              $action = "<i class='fa fa-eye' aria-hidden='true'></i> View Details";
-                            } else if ($row['status'] == "approved") {
-                              $status = "<button type='button' class='btn btn-info' data-title='Your appointment has been approved.'>Approved</button>";
-                              $action = "<a href=#><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
-                              // $action = "<i class='fa fa-money' aria-hidden='true'></i> Proceed to Payment";
-                              // $action = "<button type='button' name='paynow' id='paynow' class='btn btn-info' value=".$row['ticket']." data-title='Your appointment has been approved. Kindly settle your payment now.'></button>";
-                              // $action = "<div id='paypal-button'></div>";
+                            } else if ($row['status'] == 'declined') {
+                              $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Completed</button>";
+                              $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
                             } else if ($row['status'] == 'pending') {
-                              $status = "<button type='button' name='paypal-button' class='btn btn-warning' data-title='Your appointment is still being reviewed. Kindly wait for our confirmation email.'>For Approval</button>";
-                              $action = "<a href=#><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
-                            } else if ($row['status'] == "declined") {
-                              $status = "<button type='button' class='btn btn-danger' data-title='Your appointment has been declined. Click on 'View Details' to know more.'>Declined</button>";
-                              $action = "<i class='fa fa-eye' aria-hidden='true'></i> View Details";
-                            } else if ($row['status'] == 'cancelled'){
-                              $status = "<button type='button' class='btn btn-danger' data-title='You have cancelled this appointment. Click on 'View Details' to know more.'>Cancelled</button>";
-                              $action = "<i class='fa fa-eye' aria-hidden='true'></i> View Details";
+                              $status = "<button type='button' class='btn btn-warning' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>For Approval</button>";
+                              $action = "<a href=# onclick='cancelappt($id)'><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
+                            } else if ($row['status'] == 'approved') {
+                              $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Approved</button>";
+                              $action = '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#reschedmodal'.$id.'">Reschedule</button>';
                             }
                             echo "<tr>
-                                    <td><b>" .$row['service']. "</b><br>Date: ". $row['date'] ."<br>Time: ". $time ."</td>".
+                                    <td><b>" .$row['service']. "</b><br>Date: ". date("F j, Y", strtotime($row['date'])) ."<br>Time: ". $time ."</td>".
                                     "<td><p>".$row['ticket']."</p></td>".
                                     "<td>".$status."</td>".
                                     "<td>".$action."</td>
@@ -300,6 +292,68 @@
       </div>
     </div>
   </section>
+  <!-- Modal Resched -->
+  <?php 
+      $getId = "SELECT * FROM appointments";
+      $getIdResult = mysqli_query($con, $getId);
+      while ($row = mysqli_fetch_array($getIdResult)) {
+        $aptid = $row['apt_id'];
+        $ticket = $row['ticket'];
+        ?>
+          <div class="modal fade" id="reschedmodal<?php echo $aptid ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Reschedule</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col" id="time-container">
+                      <h3 class="text-center">Please Select a date...</h3>
+                    </div>
+                    <div class="col">
+                    <div class="form-group">
+                      <label for="aptticket" class="form-label">Appointment Ticket</label>
+                      <input type="text" class="form-control" id="aptticket" name="aptticket" value="<?php echo $ticket ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <input type="date" class="form-control" id="date" placeholder=" Date of Appointment" name="date"
+                        style="padding: 10px; padding-right: 341px;" required>
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control" id="time" name="time" style="font-size: 16px;" required>
+                        <option value="null" disabled selected>Select a time:</option>
+                        <option class="appttime" value="8:00 AM">8:00 AM - 9:00 AM</option>
+                        <option class="appttime" value="9:00 AM">9:00 AM - 10:00 AM</option>
+                        <option class="appttime" value="10:00 AM">10:00 AM - 11:00 AM</option>
+                        <option class="appttime" value="11:00 AM">11:00 AM - 12:00 AM</option>
+                        <option class="appttime" value="1:00 PM">1:00 PM - 2:00 PM</option>
+                        <option class="appttime" value="2:00 PM">2:00 PM - 3:00 PM</option>
+                        <option class="appttime" value="3:00 PM">3:00 PM - 4:00 PM</option>
+                        <option class="appttime" value="4:00 PM">4:00 PM - 5:00 PM</option>
+                      </select>
+                      <span id="recommended" style="color: green;">The earliest time you can avail at this time</span>
+                      <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
+                        style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
+                        <br>
+                      <span>Opening Hours: Mon–Sat: 8:00 AM – 5:00 PM; Sun: Holiday</span>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="updateapt">Save changes</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php
+      }
+    
+    ?>
   <br><br><br>
   <footer class="ftco-footer ftco-bg-dark ftco-section1">
     <div class="container">
@@ -354,6 +408,7 @@
             </ul>
           </div>
         </div>
+        
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2">Office</h2>
@@ -362,12 +417,13 @@
                 <li><span class="icon icon-map-marker"></span><span class="text">7 L. Sianghio St,
                     Quezon City, 1103 Metro Manila Philippines</span></li>
                 <li><span class="icon icon-phone"></span><span class="text">+63926 400 4227</span></li>
-
+                    
                 <!-- loader -->
                 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
                     <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
                     <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                       stroke="#F96D00" /></svg></div>
+                
                 <script src="assets/js/jquery.min.js"></script>
                 <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
                 <script src="assets/js/popper.min.js"></script>
@@ -382,6 +438,9 @@
                 <script src="assets/js/bootstrap-datepicker.js"></script>
                 <script src="assets/js/jquery.timepicker.min.js"></script>
                 <script src="assets/js/scrollax.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script
                   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
                 </script>
@@ -390,7 +449,12 @@
                 <script src="assets/js/payment.js"></script>
                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
                 <script src="assets/js/paypal.js"></script>
-
+                <script src="assets/js/myaccount.js"></script>
+                <script src="assets/js/recommend.js"></script>
+                <script>
+                  var today = new Date().toISOString().split('T')[0];
+                  document.getElementsByName("date")[0].setAttribute('min', today);
+                </script>
 </body>
 
 </html>

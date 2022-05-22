@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	
 
 	// form autocomplete off		
 	$(":input").attr('autocomplete', 'off');
@@ -135,8 +136,9 @@ $(document).ready(function () {
 				'email_check': 1,
 			},
 			success: function (response) {
+				var myEle = document.getElementById("email_error");
 				// clear span before error message
-				$("#registeremail_error").remove();
+				$("#email_error").remove();
 				// adding span after email textbox with error message
 				$("#registeremail").after("<span id='email_error' class='text-danger'>" + response + "</span>");
 			},
@@ -166,5 +168,7 @@ $(document).ready(function () {
 	$("#confirmpassword").keyup(function () {
 		$("#error").remove();
 	});
+
+	
 
 }); 
