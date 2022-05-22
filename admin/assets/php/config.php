@@ -1,16 +1,19 @@
 <?php
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "thirtytwo";
+    $password = "dentalclinic";
     $dbname = "thirtytwo";
 
     // crearte connection
-    $con = new Mysqli($servername, $username, $password, $dbname);
+    try {
+        $con = new Mysqli($servername, $username, $password, $dbname);
+    } catch (Exception $e) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "thirtytwo";
 
-    // check connection
-    if($con->connect_error) {
-        die("Connection Failed : " . $connect->error);
-    } else {
-        // echo "Successfully Connected";	
+        // crearte connection
+        $con = new Mysqli($servername, $username, $password, $dbname);
     }
 ?>
