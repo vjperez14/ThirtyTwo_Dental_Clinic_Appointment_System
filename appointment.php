@@ -1,8 +1,7 @@
 <?php
-  include 'assets/php/config.php';
-  include 'assets/php/calendar.php';
-  include("assets/php/info.php");
-  // session_start();
+  include_once("assets/php/config.php");
+  include_once("assets/php/info.php");
+  session_start();
   
   $isActive = isset($_SESSION['email']);
   if($isActive){
@@ -10,30 +9,7 @@
   } else {
     header("Location: login.php");
   }
-  // $calendar = new Calendar(date('Y-m-d'));
-  // //calendar
-  // $sql = "SELECT time, date FROM appointments GROUP BY time HAVING COUNT(*) >= 1 ORDER BY apt_id ASC;";
-  // $result = mysqli_query($con, $sql);
-  // while($row=mysqli_fetch_array($result)){
 
-  //   $time = $row['time'];
-  //   // $time =  date('g:i A', strtotime($time));
-  //   $date = $row['date'];
-
-  //   // $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments GROUP BY `time`";
-  //   $sqlCount = "SELECT `time`, COUNT(*) AS `count` FROM appointments WHERE `time` = '$time'";
-  //   $resultTime = mysqli_query($con, $sqlCount);
-  //   $data = mysqli_fetch_assoc($resultTime);
-  //   $count = $data['count'];
-
-  //   if ($count == '1') {
-  //     $calendar->add_event($time, $date, 1, 'green');
-  //   } elseif ($count == '2') {
-  //     $calendar->add_event($time, $date, 1, 'yellow');
-  //   } elseif ($count == '3') {
-  //     $calendar->add_event($time, $date, 1, 'red');
-  //   }
-  // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
