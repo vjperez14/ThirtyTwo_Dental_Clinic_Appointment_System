@@ -229,89 +229,91 @@
     </div>
   </section>
   <footer class="ftco-footer ftco-bg-dark ftco-section1">
-    <div class="container">
-      <div class="row mb-5 pb-5 align-items-center d-flex">
-        <div class="col-md-6">
-          <div class="heading-section heading-section-white ftco-animate">
-            <span class="subheading">Let us help you</span>
-            <h2 style="font-size: 30px;">We are ready to cater your dental concerns</h2>
-          </div>
-        </div>
-        <div class="col-md-3 ftco-animate">
-          <div class="price">
+        <div class="container">
+            <div class="row mb-5 pb-5 align-items-center d-flex">
+                <div class="col-md-6">
+                    <div class="heading-section heading-section-white ftco-animate">
+                        <span class="subheading">Let us help you</span>
+                        <h2 style="font-size: 30px;">We are ready to cater your dental concerns</h2>
+                    </div>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <div class="price">
 
-          </div>
-        </div>
-        <div class="col-md-3 ftco-animate">
-          <p class="mb-0"><a href="appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a></p>
-        </div>
-      </div>
-      <br>
-      <hr style="color: white;">
-      <div class="row mb-5">
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4 bg-primary p-4">
-            <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
-            <p>We Are A Certified Dental Clinic You Can Trust</p>
-            <ul class="ftco-footer-social list-unstyled mb-0">
-              <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4 ml-md-5">
-            <h2 class="ftco-heading-2">Our Services</h2>
-            <ul class="list-unstyled">
-              <li><a href="service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a></li>
-              <li><a href="service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
-              <li><a href="service4.php" class="py-2 d-block">DENTURES</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2"></h2>
-            <ul class="list-unstyled">
-              <br>
-              <li><a href="service5.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a></li>
-              <li><a href="service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Office</h2>
-            <div class="block-23 mb-3">
-              <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text">7 L. Sianghio St, Quezon City, 1103
-                    Metro Manila Philippines</span></li>
-                <li><span class="icon icon-phone"></span><span class="text">+63926 400 4227</span></li>
-                <li><span class="icon icon-envelope"></span><span
-                    class="text">thirtytwodentalcarecenter@gmail.com</span></li>
-              </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <p class="mb-0"><a href="appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
+                    </p>
+                </div>
             </div>
-          </div>
+            <br>
+            <hr style="color: white;">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 bg-primary p-4">
+                        <h2 class="ftco-heading-2">Thirty-two Dental Care Center</h2>
+                        <p>We Are A Certified Dental Clinic You Can Trust</p>
+                        <ul class="ftco-footer-social list-unstyled mb-0">
+                            <li class="ftco-animate"><a href="https://www.facebook.com/thirtytwodentalcarecenter"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.instagram.com/thirtytwodentalcarecenter/"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Our Services</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="services/service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a>
+                            </li>
+                            <li><a href="services/service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
+                            <li><a href="services/service4.php" class="py-2 d-block">DENTURES</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2"></h2>
+                        <ul class="list-unstyled">
+                            <br>
+                            <li><a href="services/service5.php" class="py-2 d-block">TOOTH EXTRACTION</a></li>
+                            <li><a href="services/service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Office</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">7 L. Sianghio St,
+                                        Quezon City, 1103 Metro Manila Philippines</span></li>
+                                <li><span class="icon icon-phone"></span><span class="text">+63926 400 4227</span></li>
+                                <li><span class="icon icon-envelope"></span><span
+                                        class="text">thirtytwodentalcarecenter@gmail.com</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved | This website is made with
+                        <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">IReserve</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      <br><br>
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;
-            <script>
-              document.write(new Date().getFullYear());
-            </script> All rights reserved | This website is made with
-            <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-              target="_blank">CompuPartners</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

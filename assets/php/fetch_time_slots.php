@@ -21,7 +21,7 @@ for ($i = 0; $i < 8; $i++) {
             
             <tr>
                 <td style="text-align: center;">'.$timeSlots[$i].' - '.$timeSlots[$i+1].'</td>
-                <td style="color: red; text-align: right;">Not Available</td>
+                <td style="color: red; text-align: right;">Taken</td>
             </tr>
         ';
     } elseif($time_24hour < $curtime && $selectedDate == date('Y-m-d')) {

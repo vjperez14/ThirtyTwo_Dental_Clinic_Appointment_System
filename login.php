@@ -155,6 +155,7 @@
                 </div>
                 <div class="col-md-3 ftco-animate">
                     <div class="price">
+
                     </div>
                 </div>
                 <div class="col-md-3 ftco-animate">
@@ -179,9 +180,10 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2">Our Services</h2>
                         <ul class="list-unstyled">
-                            <li><a href="service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a></li>
-                            <li><a href="service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
-                            <li><a href="service4.php" class="py-2 d-block">DENTURES</a></li>
+                            <li><a href="services/service1.php" class="py-2 d-block">ORAL PROPHYLAXYS OR CLEANING</a>
+                            </li>
+                            <li><a href="services/service3.php" class="py-2 d-block">RESTORATION OR PASTA</a></li>
+                            <li><a href="services/service4.php" class="py-2 d-block">DENTURES</a></li>
                         </ul>
                     </div>
                 </div>
@@ -190,8 +192,8 @@
                         <h2 class="ftco-heading-2"></h2>
                         <ul class="list-unstyled">
                             <br>
-                            <li><a href="service5.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a></li>
-                            <li><a href="service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
+                            <li><a href="services/service5.php" class="py-2 d-block">TOOTH EXTRACTION</a></li>
+                            <li><a href="services/service6.php" class="py-2 d-block">JACKET CROWN OR FIXED BRIDGE</a>
                             </li>
                         </ul>
                     </div>
@@ -202,8 +204,7 @@
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span class="text">7 L. Sianghio St,
-                                        Quezon City, 1103
-                                        Metro Manila Philippines</span></li>
+                                        Quezon City, 1103 Metro Manila Philippines</span></li>
                                 <li><span class="icon icon-phone"></span><span class="text">+63926 400 4227</span></li>
                                 <li><span class="icon icon-envelope"></span><span
                                         class="text">thirtytwodentalcarecenter@gmail.com</span></li>
@@ -222,7 +223,7 @@
                             document.write(new Date().getFullYear());
                         </script> All rights reserved | This website is made with
                         <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                            target="_blank">CompuPartners</a>
+                            target="_blank">IReserve</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
