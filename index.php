@@ -156,13 +156,13 @@
             <div class=" text-center heading-section ftco-animate">
                 <div class="row">
                     <div class="col-sm">
-                        <img src="assets/img/2.jpg" width="450px" height="400px" alt="">
+                        <img src="assets/img/2.jpg" class="row-images" alt="">
                     </div>
                     <div class="col-sm">
-                        <img src="assets/img/1.jpg" width="450px" height="400px" alt="">
+                        <img src="assets/img/1.jpg" class="row-images" alt="">
                     </div>
                     <div class="col-sm">
-                        <img src="assets/img/3.jpg" width="450px" height="400px" alt="">
+                        <img src="assets/img/3.jpg" class="row-images" alt="">
                     </div>
                 </div><br>
                 <h2 class="mb-4">Our Services</h2>

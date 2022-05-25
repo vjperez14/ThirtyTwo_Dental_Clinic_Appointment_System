@@ -27,3 +27,26 @@
     color: white;
     font-size: 70px;
 }
+
+.row-images {
+    width: 450px;
+    height: 400px;
+}
+
+
+@media only screen and (max-width: 1366px) {
+    .h5-carousel-caption {
+        color: white;
+    }
+
+    .h1-carousel-caption {
+        color: white;
+        font-size: 50px;
+    }
+
+    .row-images {
+        width: 350px;
+        height: 300px;
+    }
+
+}
