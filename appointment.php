@@ -1,7 +1,7 @@
 <?php
   include_once("assets/php/config.php");
   include_once("assets/php/info.php");
-  session_start();
+  // session_start();
   
   $isActive = isset($_SESSION['email']);
   if($isActive){
