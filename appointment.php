@@ -15,7 +15,7 @@
 <html lang="en">
 
 <head>
-  <title>Set An Appointment - FasTech</title>
+  <title>Set An Appointment - Thirty-two Dental Care Center</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- <link rel="icon" href="images/iconft.png"> -->

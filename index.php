@@ -266,7 +266,7 @@
             </div>
             <div class="row ftco-animate">
                 <div class="col-md-12">
-                    <div class="carousel-testimony owl-carousel ftco-owl">
+                    
                         <div class="item">
                             <div class="testimony-wrap p-4 text-center">
                                 <div class="user-img mb-4" style="background-image: url(assets/img/doc.png)">
