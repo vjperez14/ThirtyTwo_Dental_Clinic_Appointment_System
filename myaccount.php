@@ -185,10 +185,10 @@
                             $id = $row['apt_id'];
 
                             if ($row['status'] == 'completed') {
-                              $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Completed</button>";
+                              $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Complete</button>";
                               $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
                             } else if ($row['status'] == 'declined') {
-                              $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Completed</button>";
+                              $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Decline</button>";
                               $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
                             } else if ($row['status'] == 'pending') {
                               $status = "<button type='button' class='btn btn-warning' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>For Approval</button>";
