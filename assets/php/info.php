@@ -6,12 +6,10 @@
     $lastname ="";
     if(isset($_SESSION['email'])){
       mysqli_select_db($con, "thirtytwo") or die(mysqli_error($con));
-      $res=mysqli_query($con, "select firstname from registered_accounts where email = '" .$_SESSION['email']. "'");
+      $res=mysqli_query($con, "select firstname, middle, lastname from registered_accounts where email = '" .$_SESSION['email']. "'");
       while($row=mysqli_fetch_array($res)){
         $firstname = $row["firstname"];
-      }
-      $res=mysqli_query($con, "select lastname from registered_accounts where email = '" .$_SESSION['email']. "'");
-      while($row=mysqli_fetch_array($res)){
+        $middleinitial = $row['middle'];
         $lastname = $row["lastname"];
       }
     }

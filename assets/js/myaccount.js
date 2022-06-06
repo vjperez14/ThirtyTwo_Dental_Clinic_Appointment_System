@@ -15,26 +15,38 @@ function cancelappt(id) {
     })
 }
 
-$(document).ready(function () {
-    $('#updateapt').click(function () {
-        // calling validate function
-        var response = validateForm();
+function updateappt(id, date, timeslot) {
+    // getting all form data
+    var id = id;
+    // var date = $('#date').val();
+    // var time = $('#time').val();
+    var date = date.value;
+    var time = timeslot.value;
 
-        // if form validation fails
-        if (response == 0) {
-            return;
-        }
-
-        // getting all form data
-        var aptticket = $('#aptticket').val();
-        var date = $('#date').val();
-        var time = $('#time').val();
-
+    if (date == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Opps...',
+            text: 'Please select a date.',
+            timer: 1500,
+            showConfirmButton: false,
+            allowOutsideClick: false
+        });
+    } else if (timeslot.options[0].selected) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Opps...',
+            text: 'Please select a time slot.',
+            timer: 1500,
+            showConfirmButton: false,
+            allowOutsideClick: false
+        });
+    } else {
         $.ajax({
             url: './assets/php/update_apt.php',
             type: 'POST',
             data: {
-                'ticket': aptticket,
+                'id': id,
                 'date': date,
                 'time': time,
                 'save': 1
@@ -78,8 +90,8 @@ $(document).ready(function () {
                         showConfirmButton: false,
                         allowOutsideClick: false
                     }).then(() => {
-						window.location.href = "myaccount.php";
-					});
+                        window.location.href = "myaccount.php";
+                    });
                 }
             },
             error: function (e) {
@@ -93,28 +105,16 @@ $(document).ready(function () {
                 });
             }
         });
-    });
-
-    function validateForm() {
-
-        if($('#date').val() == "") {
-			$("#date").after("<span id='error' class='text-danger'>Please select a date</span>");
-			return 0;
-		}
-
-        if($('#time option:selected').prop('disabled')) {
-			$("#time").after("<span id='error' class='text-danger'>Please select a time slot</span><br id='time-br-error'>");
-			return 0;
-		}
-        return 1;
     }
-    $("#date").change(function () {
-		$("#error").remove();
-	});
-	$("#time").change(function () {
-        $("#time-br-error").remove();
-		$("#error").remove();
-	});
+
+}
+
+$(document).ready(function () {
+    // $('#updateapt').click(function () {
+        
+    // });
+
+    
 
     // Getting time as 12 hour format
 	function formatAMPM(date) {
@@ -127,23 +127,28 @@ $(document).ready(function () {
 		var strTime = hours + ':' + minutes + ' ' + ampm;
 		return strTime;
 	}
-
+    $('div.reschedmodal').on('hidden.bs.modal', function () {
+        $(this).find("input.date").val('').end();
+        $('div.time-container').html("<h3 class='text-center'>Please Select a date...</h3>");
+    
+    });
     // fetch time slots available
-    $('#date').change(function () {
-        console.log("changed")
-        var date = new Date($('#date').val());
+    $('input.date').change(function () {
+        // console.log("changed");
+        // console.log($(this).val());
+        var date = new Date($(this).val());
         var day = date.getDate();
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
         var selectedDate = [year, month, day].join('-');
-        console.log(selectedDate);
+        // console.log(selectedDate);
         $.ajax({
             type: "POST",
             url: "./assets/php/fetch_time_slots.php",
             data: { date: selectedDate },
             dataType: 'html',
             success: function (data) {
-                $('#time-container').html(data);
+                $('div.time-container').html(data);
             },
         });
 

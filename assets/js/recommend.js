@@ -20,7 +20,7 @@ $(document).ready(function () {
             },
             dataType: 'HTML',
             success: function(response){
-                $("#recommended").html("Earliest possible time you can avail: "+response);
+                $("span.recommended").html("Earliest possible time you can avail: "+response);
             }
         });
 

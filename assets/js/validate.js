@@ -26,6 +26,7 @@ $(document).ready(function () {
 
 		// getting all form data
 		var fname = $("#firstname").val();
+		var minitial = $("#minitial").val();
 		var lname = $("#lastname").val();
 		var email = $("#registeremail").val();
 		var password = $("#registerpassword").val();
@@ -40,6 +41,7 @@ $(document).ready(function () {
 			type: 'post',
 			data: {
 				'firstname': fname,
+				'middleinitial': minitial,
 				'lastname': lname,
 				'registeremail': email,
 				'registerpassword': password,
@@ -80,6 +82,10 @@ $(document).ready(function () {
 
 		if ($("#firstname").val() == "") {
 			$("#firstname").after("<span id='error' class='text-danger'>Enter your First Name</span>");
+			return 0;
+		}
+		if ($("#minitial").val() == "") {
+			$("#minitial").after("<span id='error' class='text-danger'>Enter your First Name</span>");
 			return 0;
 		}
 
@@ -151,9 +157,16 @@ $(document).ready(function () {
 	});
 	// -----------[ Clear span after clicking on inputs] -----------
 
-	$("#username").keyup(function () {
+	$("#firstname").keyup(function () {
 		$("#error").remove();
 	});
+	$("#minitial").keyup(function () {
+		$("#error").remove();
+	});
+	$("#lastname").keyup(function () {
+		$("#error").remove();
+	});
+
 
 
 	$("#registeremail").keyup(function () {

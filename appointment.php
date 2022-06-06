@@ -56,7 +56,7 @@
       switch ($isActive) {
         case true:{
           echo "$(document).ready(function(){
-            $('#name').val('" . $firstname . " " . $lastname  . "');
+            $('#name').val('" . $firstname . " ". $middleinitial . " " . $lastname  . "');
             $('#email').val('" . $user . "');
           });";
           break;
@@ -171,11 +171,13 @@
         <h1 class="mb-3" style="font-size: 30px;"><b><span>Set An Appointment</span></b></h1>
         <!-- <form action="assets/php/book.php" name="form2" method="POST" enctype="multipart/form-data"> -->
           <div class="form-group">
-            <input type="text" id="name" class="form-control" placeholder="Full Name" name="name"
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" name="name"
               style="font-size: 16px;" readonly>
           </div>
           <div class="form-group">
-            <input type="text" id="phone" class="form-control" placeholder=" Phone" onkeypress="validate(event)"
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" class="form-control" onkeypress="validate(event)"
               pattern=".{10,}" title="Valid phone number format: XXX-XXX-XXXX" name="phone" style="font-size: 16px;"
               required>
           </div>
@@ -196,15 +198,18 @@
             }
           </script>
           <div class="form-group">
+            <label for="email">Email</label>
             <input type="text" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              title="Kindly follow the format (example@email.com)" placeholder=" Email" name="email"
+              title="Kindly follow the format (example@email.com)" name="email"
               style="font-size: 16px;" readonly>
           </div>
           <div class="form-group">
-            <input type="text" id="address" class="form-control" placeholder=" Home Address" name="address"
+            <label for="address">Home Address</label>
+            <input type="text" id="address" class="form-control" name="address"
               style="font-size: 16px;" required>
           </div>
           <div class="form-group">
+            <label for="service">Services</label>
             <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
               <option value="null" disabled selected>What service would you like to avail?</option>
               <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
@@ -215,10 +220,12 @@
             </select>
           </div>
           <div class="form-group">
-            <input type="date" class="form-control" id="date" placeholder=" Date of Appointment" name="date"
+            <label for="date">Date</label>
+            <input type="date" class="form-control" id="date" name="date"
               style="padding: 10px; padding-right: 341px;" required>
           </div>
           <div class="form-group">
+            <label for="time">Time</label>
             <select class="form-control" id="time" name="time" style="font-size: 16px;" required>
               <option value="null" disabled selected>Select a time:</option>
               <option class="appttime" value="8:00 AM">8:00 AM - 9:00 AM</option>
@@ -230,15 +237,15 @@
               <option class="appttime" value="3:00 PM">3:00 PM - 4:00 PM</option>
               <option class="appttime" value="4:00 PM">4:00 PM - 5:00 PM</option>
             </select>
-            <span id="recommended" style="color: green;">The earliest time you can avail at this time</span>
+            <span class="recommended" id="recommended" style="color: green;">The earliest time you can avail at this time</span>
             <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
               style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
               <br>
             <span>Opening Hours: Mon–Sat: 8:00 AM – 5:00 PM; Sun: Holiday</span>
           </div>
           <div class="form-group">
-            <textarea id="message" cols="30" rows="7" class="form-control"
-              placeholder=" Elaborate your Concern" name="message" style="font-size: 16px;" required></textarea>
+            <label for="message">Elaborate your Concern</label>
+            <textarea id="message" cols="30" rows="7" class="form-control" name="message" style="font-size: 16px;" required></textarea>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-secondary" id="setapt" name="setapt">Set An Appointment</button>

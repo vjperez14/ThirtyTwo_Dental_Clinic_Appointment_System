@@ -2,7 +2,7 @@
 include('config.php');
 date_default_timezone_set('Asia/Manila');
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save']) && $_POST['save'] == 1) {
-    $ticket = $_POST['ticket'];
+    $id = $_POST['id'];
     $date = $_POST['date'];
     $date = date("Y-m-d", strtotime($date));
     $time = $_POST['time'];
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save']) && $_POST['sav
     } elseif ($time_24hour < $curtime && date("Y-m-d") == $date ) {
         echo "late";
     } else {
-        $sql = "UPDATE appointments SET date = '$date', time = '$time', status = 'pending' WHERE ticket = '$ticket'";
+        $sql = "UPDATE appointments SET date = '$date', time = '$time', status = 'pending' WHERE apt_id = '$id'";
         $result = mysqli_query($con, $sql);
         if ($result) {
             echo "Your request for reschedule will be reviewed by the admin.";

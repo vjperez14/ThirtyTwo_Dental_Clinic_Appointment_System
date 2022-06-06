@@ -13,6 +13,7 @@
         }
     } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save']) && $_POST['save'] == 1) {// save records into the database
         $fname = $_POST['firstname'];
+        $minitial = $_POST['minitial'];
         $lname = $_POST['lastname'];
         $email = $_POST['registeremail'];
         $password = $_POST['registerpassword'];
@@ -21,7 +22,7 @@
         $password   =        md5($password);
 
         // insert into table
-        $sql = "INSERT INTO registered_accounts (firstname, lastname, email, password, phone) VALUES ('$fname', '$lname', '$email', '$password', '$phone') ";
+        $sql = "INSERT INTO registered_accounts (firstname, middle, lastname, email, password, phone) VALUES ('$fname', '$minitial', '$lname', '$email', '$password', '$phone') ";
         $result = $con->query($sql);
         header("Location: ../../registersuccess.php");
         if($result) {

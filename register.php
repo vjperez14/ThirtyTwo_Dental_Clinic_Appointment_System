@@ -95,24 +95,28 @@
                 <br>
                 <div class="text mt-5">
                     <span class="subheading1">YOUR JOURNEY WITH US STARTS HERE</span>
-                    <h1 class="mb-3" style="font-size: 30px;"><b><span>Create your Thirty-two Dental Account</span></b>
-                    </h1>
+                    <h1 class="mb-3" style="font-size: 30px;"><b><span>Create your Thirty-two Dental Account</span></b></h1>
+                    <span class="text-danger">All field that has asterisk(*) are required.</span>
                     <form name="form2" id="RegForm" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="firstname">First Name</label>
+                            <label for="firstname">First Name<span class="text-danger">*</span></label>
                             <input type="text" name="firstname" id="firstname" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="lastname">Last Name</label>
+                            <label for="minitial">Middle Initial</label>
+                            <input type="text" name="minitial" id="minitial" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name<span class="text-danger">*</span></label>
                             <input type="text" name="lastname" id="lastname" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="registeremail">Email Address</label>
+                            <label for="registeremail">Email Address<span class="text-danger">*</span></label>
                             <input type="email" name="registeremail" id="registeremail" class="form-control"
                                 title="Kindly follow the format (example@email.com)" required>
                         </div>
                         <div class="form-group">
-                            <label for="phonenumber">Phone Number</label>
+                            <label for="phonenumber">Phone Number<span class="text-danger">*</span></label>
                             <input type="text" name="phonenumber" id="phonenumber"
                                 onkeypress="return onlyNumberKey(event)"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -129,13 +133,13 @@
                             </script>
                         </div>
                         <div class="form-group">
-                            <label for="confirmpassword">Password</label>
+                            <label for="confirmpassword">Password<span class="text-danger">*</span></label>
                             <input type="password" name="registerpassword" id="registerpassword" class="form-control"
                                 pattern=".{8,}" title="Your password must contain eight (8) or more characters."
                                 required>
                         </div>
                         <div class="form-group">
-                            <label for="confirmpassword">Confirm Password</label>
+                            <label for="confirmpassword">Confirm Password<span class="text-danger">*</span></label>
                             <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
                                 pattern=".{8,}" required>
                         </div>

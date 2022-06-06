@@ -1,5 +1,6 @@
 <?php
   include('assets/php/config.php');
+  date_default_timezone_set('Asia/Manila');
   session_start();
   $isActive = isset($_SESSION['email']);
   if($isActive){
@@ -129,8 +130,9 @@
             }
             while($row=mysqli_fetch_array($res)){
               $firstname = $row["firstname"];
+              $middle = $row['middle'];
               $lastname = $row["lastname"];
-              echo "<h2 class='mb-4'>$firstname $lastname</h2>";
+              echo "<h2 class='mb-4'>$firstname $middle $lastname</h2>";
             }
           ?>
                 </div>
@@ -164,6 +166,7 @@
                                 </div>
                                 <div class="order-first" style="margin-left: -20%;">
                                     <form method="POST" id="dashboard-data" enctype="multipart/form-data">
+                                    <h5 class="text-muted">Note: You can only reschedule the day before of your appointment.</h5>
                                         <table id="list-appt">
                                             <tr>
                                                 <th>Appointment</th>
@@ -178,36 +181,44 @@
                           echo "There is no data to show";
                           die('Could not get data: ' . mysql_error());
                         }
+                        $action = "";
+                        $status = "";
                         if (mysqli_num_rows($res) != 0) {
-                          while($row=mysqli_fetch_array($res)){
-                            $time = $row['time'];
-                            $time =  date('g:i A', strtotime($time));
-                            $id = $row['apt_id'];
-
-                            if ($row['status'] == 'completed') {
-                              $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Complete</button>";
-                              $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
-                            } else if ($row['status'] == 'declined') {
-                              $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Decline</button>";
-                              $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
-                            } else if ($row['status'] == 'pending') {
-                              $status = "<button type='button' class='btn btn-warning' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>For Approval</button>";
-                              $action = "<a href=# onclick='cancelappt($id)'><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
-                            } else if ($row['status'] == 'approved') {
-                              $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Approved</button>";
-                              $action = '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#reschedmodal'.$id.'">Reschedule</button>';
+                            while($row=mysqli_fetch_array($res)){
+                                $time = $row['time'];
+                                $time =  date('g:i A', strtotime($time));
+                                $id = $row['apt_id'];
+                                // $samplecurdate = date("d", strtotime('2022-06-02'));
+                                $samplecurdate = date("d", strtotime(date('Y-d-m')));
+                                $aptdate = date("d", strtotime($row['date']));
+                                if ($row['status'] == 'completed') {
+                                    $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Complete</button>";
+                                    $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
+                                } else if ($row['status'] == 'declined') {
+                                    $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Decline</button>";
+                                    $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
+                                } else if ($row['status'] == 'pending') {
+                                    $status = "<button type='button' class='btn btn-warning' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>For Approval</button>";
+                                    $action = "<a href=# onclick='cancelappt($id)'><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
+                                } else if ($row['status'] == 'approved') {
+                                    $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Approved</button>";
+                                    if ($aptdate-$samplecurdate <= 0) {
+                                        $action = '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#reschedmodal'.$id.'" disabled>Reschedule</button>';
+                                    } else {
+                                        $action = '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#reschedmodal'.$id.'" >Reschedule</button>';
+                                    }
+                                }
+                                echo "<tr>
+                                        <td><b>" .$row['service']. "</b><br>Date: ". date("F j, Y", strtotime($row['date'])) ."<br>Time: ". $time ."</td>".
+                                        "<td><p>".$row['ticket']."</p></td>".
+                                        "<td>".$status."</td>".
+                                        "<td>".$action."</td>
+                                    </tr>";
                             }
-                            echo "<tr>
-                                    <td><b>" .$row['service']. "</b><br>Date: ". date("F j, Y", strtotime($row['date'])) ."<br>Time: ". $time ."</td>".
-                                    "<td><p>".$row['ticket']."</p></td>".
-                                    "<td>".$status."</td>".
-                                    "<td>".$action."</td>
-                                  </tr>";
-                          }
                         } else {
-                          echo "<tr><td> There is no data to show.</td></tr>";
+                            echo "<tr><td> There is no data to show.</td></tr>";
                         }
-                      ?>
+                    ?>
                                         </table>
                                     </form>
                                 </div>
@@ -223,40 +234,51 @@
                     $infosql = "SELECT * FROM registered_accounts WHERE email = '" .$_SESSION['email']. "'";
                     $inforesults = mysqli_query($con, $infosql);
                     while($row=mysqli_fetch_array($inforesults)) {
-                      $firstname = $row['firstname'];
-                      $lastname = $row['lastname'];
-                      $email = $row['email'];
-                      $phone = "0".$row['phone'];                    
+                        $id = $row['id'];
+                        $firstname = $row['firstname'];
+                        $middle = $row['middle'];
+                        $lastname = $row['lastname'];
+                        $email = $row['email'];
+                        $phone = "0".$row['phone'];                    
                   ?>
-                                    <form name="form1" method="post" enctype="multipart/form-data">
-                                        <div class="row1">
-                                            <div class="column1">
-                                                <div class="form-group">
-                                                    <input type="text" name="firstname" id="firstname"
-                                                        class="form-control" value="<?php echo $firstname ?>"
-                                                        required>First Name*
-                                                </div>
-                                            </div>
-                                            <div class="column1">
-                                                <div class="form-group">
-                                                    <input type="text" name="lastname" id="lastname"
-                                                        class="form-control" value="<?php echo $lastname ?>"
-                                                        required>Last Name*
-                                                </div>
-                                            </div>
+                                    <form  method="post" enctype="multipart/form-data">
+                                        <div class="form-group" hidden>
+                                            Account ID
+                                            <input type="text" name="id" id="id"
+                                                class="form-control" value="<?php echo $id ?>"
+                                                required>
                                         </div>
                                         <div class="form-group">
+                                            First Name
+                                            <input type="text" name="firstname" id="firstname"
+                                                class="form-control" value="<?php echo $firstname ?>"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            Middle Name
+                                            <input type="text" name="minitial" id="minitial"
+                                                class="form-control" value="<?php echo $middle ?>"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            Last Name
+                                            <input type="text" name="lastname" id="lastname"
+                                                class="form-control" value="<?php echo $lastname ?>"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            Email Address
                                             <input type="text" name="email" id="email" class="form-control"
                                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                                 title="Kindly follow the format (example@email.com)"
-                                                value="<?php echo $email ?>" required>Email Address*
+                                                value="<?php echo $email ?>" required>
                                         </div>
                                         <div class="form-group">
+                                            Phone Number
                                             <input type="text" name="phone" onkeypress="validate(event)"
                                                 pattern=".{10,}" title="Valid phone number format: XXX-XXX-XXXX"
                                                 id="phone" class="form-control" value="<?php echo $phone ?>"
-                                                required>Phone
-                                            Number*
+                                                required>
                                         </div>
                                         <script>
                                         function validate(evt) {
@@ -279,7 +301,7 @@
                   ?>
                                     </form>
                                     <br>
-                                    <p><a href="#" class="btn btn-secondary py-3">Save Changes</a></p>
+                                    <p><a href="#" class="btn btn-secondary py-3" id="save">Save Changes</a></p>
                                 </div>
                             </div>
                         </div>
@@ -315,7 +337,7 @@
         $aptid = $row['apt_id'];
         $ticket = $row['ticket'];
         ?>
-    <div class="modal fade" id="reschedmodal<?php echo $aptid ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade reschedmodal" id="reschedmodal<?php echo $aptid ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
@@ -325,21 +347,21 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col" id="time-container">
-                            <h3 class="text-center">Please Select a date...</h3>
+                        <div class="col time-container" >
+                            <h3 class="text-center" id="test">Please Select a date...</h3>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="aptticket" class="form-label">Appointment Ticket</label>
-                                <input type="text" class="form-control" id="aptticket" name="aptticket"
+                                <input type="text" class="form-control aptticket" id="aptticket" name="aptticket"
                                     value="<?php echo $ticket ?>" readonly>
                             </div>
                             <div class="form-group">
-                                <input type="date" class="form-control" id="date" placeholder=" Date of Appointment"
+                                <input type="date" class="form-control date" id="date<?php echo $aptid ?>" placeholder=" Date of Appointment"
                                     name="date" style="padding: 10px; padding-right: 341px;" required>
                             </div>
                             <div class="form-group">
-                                <select class="form-control" id="time" name="time" style="font-size: 16px;" required>
+                                <select class="form-control time" id="time<?php echo $aptid ?>" name="time" style="font-size: 16px;" required>
                                     <option value="null" disabled selected>Select a time:</option>
                                     <option class="appttime" value="8:00 AM">8:00 AM - 9:00 AM</option>
                                     <option class="appttime" value="9:00 AM">9:00 AM - 10:00 AM</option>
@@ -350,7 +372,7 @@
                                     <option class="appttime" value="3:00 PM">3:00 PM - 4:00 PM</option>
                                     <option class="appttime" value="4:00 PM">4:00 PM - 5:00 PM</option>
                                 </select>
-                                <span id="recommended" style="color: green;">The earliest time you can avail at this
+                                <span class="recommended" id="recommended" style="color: green;">The earliest time you can avail at this
                                     time</span>
                                 <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
                         style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
@@ -362,7 +384,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="updateapt">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="updateappt(<?php echo $aptid ?>, document.getElementById('date<?php echo $aptid ?>'), document.getElementById('time<?php echo $aptid ?>'))">Save changes</button>
 
                 </div>
             </div>
@@ -489,6 +511,8 @@
                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
                 <script src="assets/js/paypal.js"></script>
                 <script src="assets/js/myaccount.js"></script>
+                <script src="assets/js/updateprofile.js"></script>
+
                 <script src="assets/js/recommend.js"></script>
                 <script>
                 var today = new Date().toISOString().split('T')[0];
