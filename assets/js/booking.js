@@ -16,7 +16,6 @@ $(document).ready(function () {
 		var name = $('#name').val();
 		var phone = $('#phone').val();
 		var email = $('#email').val();
-		var address = $('#address').val();
 		var service = $('#service').val();
 		// date convertion
 		var date = $('#date').val();
@@ -30,7 +29,6 @@ $(document).ready(function () {
 				'name': name,
 				'phone': phone,
 				'email': email,
-				'address': address,
 				'service': service,
 				'date': date,
 				'time': time,
@@ -112,10 +110,6 @@ $(document).ready(function () {
 		}
 		if($('#email').val() == "") {
 			$("#email").after("<span id='error' class='text-danger'>Please enter your email</span>");
-			return 0;
-		}
-		if($('#address').val() == "") {
-			$("#address").after("<span id='error' class='text-danger'>Please enter your address</span>");
 			return 0;
 		}
 		if($('#service option:selected').prop('disabled')) {

@@ -134,14 +134,11 @@
                         </div>
                         <div class="form-group">
                             <label for="confirmpassword">Password<span class="text-danger">*</span></label>
-                            <input type="password" name="registerpassword" id="registerpassword" class="form-control"
-                                pattern=".{8,}" title="Your password must contain eight (8) or more characters."
-                                required>
+                            <input type="password" name="registerpassword" id="registerpassword" class="form-control" pattern=".{8,}" required title="3 characters minimum">
                         </div>
                         <div class="form-group">
                             <label for="confirmpassword">Confirm Password<span class="text-danger">*</span></label>
-                            <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
-                                pattern=".{8,}" required>
+                            <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" pattern=".{8,}" required title="3 characters minimum">
                         </div>
                         <div class="form-group">
                             <!-- <input type="submit" name="setapp" value="Sign Up" class="btn btn-secondary py-3 px-5"> -->
@@ -253,6 +250,8 @@
     <script src="assets/js/scrollax.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/validate.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

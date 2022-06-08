@@ -182,31 +182,10 @@
       <div class="row block-9">
 
         <div class="col-md-6 pr-md-5">
-          <form action="appointment.php" name="form1" method="post" enctype="multipart/form-data">
+          <form action="assets/php/sendinquary.php" name="form1" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <input type="text" id="name" class="form-control" placeholder=" Full Name" name="name" required>
             </div>
-            <div class="form-group">
-              <input type="text" id="phone" class="form-control" placeholder=" Phone Number"
-                onkeypress="validate(event)" pattern=".{10,}" title="Valid phone number format: XXX-XXX-XXXX"
-                name="phone" required>
-            </div>
-            <script>
-              function validate(evt) {
-                var theEvent = evt || window.event;
-                if (theEvent.type === 'paste') {
-                  key = event.clipboardData.getData('text/plain');
-                } else {
-                  var key = theEvent.keyCode || theEvent.which;
-                  key = String.fromCharCode(key);
-                }
-                var regex = /[0-9]|\./;
-                if (!regex.test(key)) {
-                  theEvent.returnValue = false;
-                  if (theEvent.preventDefault) theEvent.preventDefault();
-                }
-              }
-            </script>
             <div class="form-group">
               <input type="text" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Kindly follow the format (example@email.com)" placeholder=" Email Address" name="email" required>
@@ -241,10 +220,6 @@
                     <div class="price">
 
                     </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <p class="mb-0"><a href="appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
-                    </p>
                 </div>
             </div>
             <br>

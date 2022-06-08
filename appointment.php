@@ -58,6 +58,8 @@
           echo "$(document).ready(function(){
             $('#name').val('" . $firstname . " ". $middleinitial . " " . $lastname  . "');
             $('#email').val('" . $user . "');
+            $('#phone').val('0" . $phone . "');
+
           });";
           break;
         }
@@ -179,7 +181,7 @@
             <label for="phone">Phone Number</label>
             <input type="text" id="phone" class="form-control" onkeypress="validate(event)"
               pattern=".{10,}" title="Valid phone number format: XXX-XXX-XXXX" name="phone" style="font-size: 16px;"
-              required>
+              required readonly>
           </div>
           <script>
             function validate(evt) {
@@ -204,20 +206,85 @@
               style="font-size: 16px;" readonly>
           </div>
           <div class="form-group">
-            <label for="address">Home Address</label>
-            <input type="text" id="address" class="form-control" name="address"
-              style="font-size: 16px;" required>
-          </div>
-          <div class="form-group">
             <label for="service">Services</label>
-            <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
-              <option value="null" disabled selected>What service would you like to avail?</option>
-              <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
-              <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
-              <option value="DENTURES">DENTURES </option>
-              <option value="TOOTH EXTRACTION">TOOTH EXTRACTION</option>
-              <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
-            </select>
+            <?php
+              $appointment = $_GET['service'];
+              switch ($appointment) {
+                case 1:
+                  echo '
+                    <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
+                      <option value="null" disabled >What service would you like to avail?</option>
+                      <option value="ORAL PROPHYLAXYS OR CLEANING"selected>ORAL PROPHYLAXYS OR CLEANING</option>
+                      <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
+                      <option value="DENTURES">DENTURES </option>
+                      <option value="TOOTH EXTRACTION">TOOTH EXTRACTION</option>
+                      <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
+                    </select>
+                  ';
+                break;
+                case 3:
+                  echo '
+                    <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
+                      <option value="null" disabled >What service would you like to avail?</option>
+                      <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
+                      <option value="RESTORATION OR PASTA" selected>RESTORATION OR PASTA</option>
+                      <option value="DENTURES">DENTURES </option>
+                      <option value="TOOTH EXTRACTION">TOOTH EXTRACTION</option>
+                      <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
+                    </select>
+                  ';
+                break;
+                case 4:
+                  echo '
+                    <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
+                      <option value="null" disabled >What service would you like to avail?</option>
+                      <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
+                      <option value="RESTORATION OR PASTA" >RESTORATION OR PASTA</option>
+                      <option value="DENTURES" selected>DENTURES </option>
+                      <option value="TOOTH EXTRACTION">TOOTH EXTRACTION</option>
+                      <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
+                    </select>
+                  ';
+                break;
+                case 5:
+                  echo '
+                    <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
+                      <option value="null" disabled >What service would you like to avail?</option>
+                      <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
+                      <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
+                      <option value="DENTURES" >DENTURES </option>
+                      <option value="TOOTH EXTRACTION" selected>TOOTH EXTRACTION</option>
+                      <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
+                    </select>
+                  ';
+                break;
+                case 6:
+                  echo '
+                    <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
+                      <option value="null" disabled >What service would you like to avail?</option>
+                      <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
+                      <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
+                      <option value="DENTURES">DENTURES </option>
+                      <option value="TOOTH EXTRACTION" >TOOTH EXTRACTION</option>
+                      <option value="JACKET CROWN OR FIXED BRIDGE" selected>JACKET CROWN OR FIXED BRIDGE</option>
+                    </select>
+                  ';
+                break;
+                  
+                default:
+                  echo '
+                      <select class="form-control" id="service" name="service" style="font-size: 16px;" required>
+                        <option value="null" disabled selected>What service would you like to avail?</option>
+                        <option value="ORAL PROPHYLAXYS OR CLEANING">ORAL PROPHYLAXYS OR CLEANING</option>
+                        <option value="RESTORATION OR PASTA">RESTORATION OR PASTA</option>
+                        <option value="DENTURES">DENTURES </option>
+                        <option value="TOOTH EXTRACTION">TOOTH EXTRACTION</option>
+                        <option value="JACKET CROWN OR FIXED BRIDGE">JACKET CROWN OR FIXED BRIDGE</option>
+                      </select>
+                    ';
+                break;
+              }
+            ?>
           </div>
           <div class="form-group">
             <label for="date">Date</label>

@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "thirtytwo";
-    $password = "dentalclinic";
+    $password = "denatalclinic";
     $dbname = "thirtytwo";
 
     // crearte connection

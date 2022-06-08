@@ -14,7 +14,7 @@
         // time validation check if the slots for specific time is full or not
         $time = mysqli_real_escape_string($con, $_POST['time']);
         $date = mysqli_real_escape_string($con, $_POST['date']);
-        $time_24hour  = date("H:i", strtotime($time));
+
         $curtime = date('H:i');
         $newDate = date("F j, Y", strtotime($date));
 

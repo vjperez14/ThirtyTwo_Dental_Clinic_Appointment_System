@@ -24,5 +24,5 @@ $(document).ready(function(){
     });
     setInterval(function () {
         load_unseen_notification();
-    },50);
+    },5000);
 });

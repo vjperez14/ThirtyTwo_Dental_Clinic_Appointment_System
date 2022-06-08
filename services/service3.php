@@ -87,6 +87,7 @@
             <p class="mb-0">Additional surface/area of each tooth ₱300</p>
             <p class="mb-0">Price is depends how big the aree of the tooth will restore</p>
             <p class="mb-0">**additional charges for infection control and check up**</p>
+            <p class="mb-0"><?php echo '<a href="../appointment.php?service=3" class="btn btn-secondary py-3 px-4">Set An Appointment</a>' ?></p>
           </div>
         </div>
       </div>
@@ -105,10 +106,6 @@
         <div class="col-md-3 ftco-animate">
           <div class="price">
           </div>
-        </div>
-        <div class="col-md-3 ftco-animate">
-          <p class="mb-0"><a href="../appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
-          </p>
         </div>
       </div>
       <br>

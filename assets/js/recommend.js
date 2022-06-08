@@ -21,11 +21,15 @@ $(document).ready(function () {
             dataType: 'HTML',
             success: function(response){
                 $("span.recommended").html("Earliest possible time you can avail: "+response);
+            },
+            error: function(response) {
+                console.log(response);
             }
         });
 
     }
+    load_recommender();
     setInterval(function () {
         load_recommender();
-    }, 50);
+    }, 300000);
 });

@@ -11,7 +11,6 @@
         $phone = $_POST['phone'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
-        $address = $_POST['address'];
         $service = $_POST['service'];
         $date = $_POST['date'];
         $date = date("Y-m-d", strtotime($date));
@@ -32,7 +31,7 @@
         } elseif ($time_24hour < $curtime && date("Y-m-d") == $date ) {
             echo "late";
         } else {
-            $sql = "INSERT INTO appointments (requestee, name, phone, email, address, service, date, time, issue, ticket, status, notif_status) VALUES ($fk_id,'$name', $phone, '$email', '$address', '$service', '$date', '$time', '$issue', '$ticket', 'pending', 1) ";
+            $sql = "INSERT INTO appointments (requestee, name, phone, email, service, date, time, issue, ticket, status, notif_status) VALUES ($fk_id,'$name', $phone, '$email', '$service', '$date', '$time', '$issue', '$ticket', 'pending', 1) ";
             $result = mysqli_query($con, $sql);
             if ($result) {
                 echo "Your appointment has been sent.";

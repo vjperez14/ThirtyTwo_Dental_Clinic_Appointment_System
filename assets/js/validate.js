@@ -19,8 +19,6 @@ $(document).ready(function () {
 		// if form validation fails			
 		if (response == 0) {
 			return;
-		} else {
-			window.location.href = "registersuccess.php";
 		}
 
 
@@ -48,24 +46,50 @@ $(document).ready(function () {
 				'phonenumber': phonenumber,
 				'save': 1
 			},
-
-			// before ajax request
 			beforeSend: function () {
-				$("#result").html("<p class='text-success'> Please wait.. </p>");
-			},
-
-			// on success response
-			success: function (response) {
-				$("#result").html(response);
-
-				// reset form fields
-				$("#RegForm")[0].reset();
-			},
-
-			// error response
-			error: function (e) {
-				$("#result").html("Some error encountered.");
-			}
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Pleas Wait...',
+                    text: 'Submitting your form',
+                    timer: 1500,
+                    showConfirmButton: false,
+                    allowOutsideClick: false
+                });
+            },
+            success: function (response) {
+                if (response == "taken") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Opps...',
+                        text: 'Your email is already registered',
+                        timer: 3000,
+                        showConfirmButton: false,
+                        allowOutsideClick: false
+                    });
+                } else {
+                    console.log(response);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registered',
+                        text: response,
+                        timer: 3000,
+                        showConfirmButton: false,
+                        allowOutsideClick: false
+                    }).then(() => {
+                        window.location.href = "registersuccess.php";
+                    });
+                }
+            },
+            error: function (e) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Opps...',
+                    text: 'Something went wrong',
+                    timer: 1500,
+                    showConfirmButton: false,
+                    allowOutsideClick: false
+                });
+            }
 
 		});
 	});
@@ -79,13 +103,13 @@ $(document).ready(function () {
 
 		// removing span text before message
 		$("#error").remove();
+		var password = $("#registerpassword").val()
+		var conFpassword = $("#confirmpassword").val()
+
+		console.log(password.length <= 8);
 
 		if ($("#firstname").val() == "") {
 			$("#firstname").after("<span id='error' class='text-danger'>Enter your First Name</span>");
-			return 0;
-		}
-		if ($("#minitial").val() == "") {
-			$("#minitial").after("<span id='error' class='text-danger'>Enter your First Name</span>");
 			return 0;
 		}
 
@@ -103,6 +127,12 @@ $(document).ready(function () {
 
 		if ($("#registerpassword").val() == "") {
 			$("#registerpassword").after("<span id='error' class='text-danger'> Enter your password </span>");
+			return 0;
+		}	
+		
+			
+		if (password.length <= 8) {
+			$("#registerpassword").after("<span id='error' class='text-danger'> Password must be atleast 8 characters </span>");
 			return 0;
 		}
 

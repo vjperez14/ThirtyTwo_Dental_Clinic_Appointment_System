@@ -7,6 +7,8 @@ $timeSlots = array("8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:0
 
 
 if (isset($_POST['view'])) {
+    $curtime = date('H:i');
+    
     $beginDate = date('Y-m-d');
     $endDate = date('Y-m-d', strtotime($beginDate.'+1 month'));
     $begin = new DateTime( $beginDate );
@@ -20,26 +22,26 @@ if (isset($_POST['view'])) {
 
     $nextAvailable = '';
 
-    foreach($daterange as $date2) {
-        $checkDate = date_format($date2, 'Y-m-d');
+    foreach($daterange as $range) {
+        $checkDate = date_format($range, 'Y-m-d');
         foreach($timeSlots as $timeSlot) {
             $newDate = date_create($checkDate.' '.$timeSlot);
-            if ($currentTime > $newDate or $timeSlot == "5:00 PM") {
+            if ($timeSlot == "5:00 PM") {
                 break;
             }
-            $sql = "SELECT * FROM appointments WHERE time='$timeSlot' AND date='$checkDate'";
+            $sql = "SELECT * FROM appointments WHERE time = '$timeSlot' AND date = '$checkDate'";
             $result = mysqli_query($con, $sql);
             $resultCheck = mysqli_num_rows($result);
 
             $nextAvailable = date_create($timeSlot.' '.$checkDate);
             $nextAvailable = date_format($nextAvailable, 'F d Y, h:i A');
-            
-            if ($resultCheck == 0 && $nextAvailable != '') {
+            if ($resultCheck == 0 && $nextAvailable != ''&& $currentTime < $newDate)  {
+                
                 break 2;
             }
         }
-        
     }
     echo "$nextAvailable<br>";
 }
+// && $curtime < date("H:i", strtotime($timeSlot)) && $range >= $beginDate
 ?>

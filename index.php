@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/index.css">
 
+
 </head>
 
 <body>
@@ -92,7 +93,7 @@
                                 ?>
                                     <li class='nav-item cta'><a href='myaccount' class='nav-link'><span>My Account</span></a></li>
                                     <li class="nav-item dropdown" >
-                                        <a class="nav-link" href="#" data-bs-toggle="dropdown">
+                                        <a class="nav-link" href="myaccount" data-bs-toggle="dropdown">
                                             <span class="label label-pill text-danger count" style="border-radius:10px;"></span>
                                             <i class="fas fa-bell" style="font-size:18px;"></i>
                                             <!-- <div class="dropdown-menu" style="padding-left:5px;width:300px;"></div> -->
@@ -128,7 +129,7 @@
                     <div class="carousel-caption">
                         <h5 class="h5-carousel-caption animated slideInDown">Welcome to Thirty-two Dental Care Center</h5>
                         <h1 class="h1-carousel-caption animated zoomIn">Take The Best <br> Quality Dental <br> Treatment</h1>
-                        <a href="appointment" class="btn btn-lg btn-primary animated slideInUp">Set an appointment now!</a>
+                        <?php echo '<a href="appointment.php?service=0" class="btn btn-lg btn-primary animated slideInUp">Set an appointment now!</a>'; ?>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -136,8 +137,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="h5-carousel-caption">Keep Your Teeth Healthy</h5>
                         <h1 class="h1-carousel-caption ">Take The Best <br> Quality Dental <br> Treatment</h1>
-                        <a href="appointment" class="btn btn-lg btn-primary animated slideInUp">Set an appointment now!</a>
-                        
+                        <?php echo '<a href="appointment.php?service=0" class="btn btn-lg btn-primary animated slideInUp">Set an appointment now!</a>'; ?>
                     </div>
                 </div>
             </div>
@@ -322,10 +322,6 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 ftco-animate">
-                    <p class="mb-0"><a href="appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
-                    </p>
-                </div>
             </div>
             <br>
             <hr style="color: white;">
@@ -407,7 +403,7 @@
     <script src="assets/js/scrollax.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/validate.js"></script>
-    <script src="assets/js/notification.js"></script>
+    <!-- <script src="assets/js/notification.js"></script> -->
 </body>
 
 </html>

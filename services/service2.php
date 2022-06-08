@@ -85,6 +85,7 @@
             <p class="mb-0">Prices Light calcular deposits ₱800</p>
             <p class="mb-0">Moderate 1,200pesos</p>
             <p class="mb-0">Heavy 1,500 and UP</p>
+            <p class="mb-0"><?php echo '<a href="../appointment.php?service=1" class="btn btn-secondary py-3 px-4">Set An Appointment</a>' ?></p>
           </div>
         </div>
       </div>
@@ -165,9 +166,6 @@
             <div class="price">
 
             </div>
-          </div>
-          <div class="col-md-3 ftco-animate">
-            <p class="mb-0"><a href="../appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a></p>
           </div>
         </div>
         <br>

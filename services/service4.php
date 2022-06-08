@@ -89,6 +89,7 @@
             <p class="mb-0">Impacted tooth or surgery pocedure ₱7,500 and Up Per Month</p>
             <p class="mb-0">Materials: US Plastic pontic or ipin on acrylic plastic base</p>
             <p class="mb-0">**additional charges for infection control and check up**</p>
+            <p class="mb-0"><?php echo '<a href="../appointment.php?service=4" class="btn btn-secondary py-3 px-4">Set An Appointment</a>' ?></p>
           </div>
         </div>
       </div>
@@ -105,10 +106,6 @@
           <div class="col-md-3 ftco-animate">
             <div class="price">
             </div>
-          </div>
-          <div class="col-md-3 ftco-animate">
-            <p class="mb-0"><a href="../appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
-            </p>
           </div>
         </div>
         <br>

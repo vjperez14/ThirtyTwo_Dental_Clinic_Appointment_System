@@ -86,6 +86,7 @@
             <p class="mb-0">Porcelain with metal ₱3,500</p>
             <p class="mb-0">Depend on class of porcelain used Per Month</p>
             <p class="mb-0">**additional charges for infection control and check up**</p>
+            <p class="mb-0"><?php echo '<a href="../appointment.php?service=6" class="btn btn-secondary py-3 px-4">Set An Appointment</a>' ?></p>
           </div>
         </div>
       </div>
@@ -103,10 +104,6 @@
         <div class="col-md-3 ftco-animate">
           <div class="price">
           </div>
-        </div>
-        <div class="col-md-3 ftco-animate">
-          <p class="mb-0"><a href="../appointment.php" class="btn btn-secondary py-3 px-4">Set An Appointment</a>
-          </p>
         </div>
       </div>
       <br>
