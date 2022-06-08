@@ -308,7 +308,7 @@
             <!-- <input id="time" type="time" placeholder=" Time of Appointment" name="time"
               style="border: 1px solid #e6e6e6; padding: 10px; padding-right: 341px;" required> -->
               <br>
-            <span>Opening Hours: Mon–Sat: 8:00 AM – 5:00 PM; Sun: Holiday</span>
+            <span>Opening Hours: Mon–Sat: 8:00 AM – 5:00 PM; Sun: Closed</span>
           </div>
           <div class="form-group">
             <label for="message">Elaborate your Concern</label>

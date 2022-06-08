@@ -35,7 +35,7 @@ $(document).ready(function () {
                 console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    title: 'Eidt Success',
+                    title: 'Edit Success',
                     text: response,
                     timer: 3000,
                     showConfirmButton: false,
