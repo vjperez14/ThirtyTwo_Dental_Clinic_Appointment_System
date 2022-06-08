@@ -78,7 +78,7 @@
     <div class="overlay"></div>
     <div class="container-fluid px-0">
       <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
-        <img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="../assets/img/enamel.png"
+        <img class="one-third  align-self-end order-md-last img-fluid" src="../assets/img/enamel.png"
           width="50px" height="50px" alt="">
         <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
           <div class="text mt-5">

@@ -77,7 +77,7 @@
     <div class="overlay"></div>
     <div class="container-fluid px-0">
       <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
-        <img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="../assets/img/brush-teeth.png"
+        <img class="one-third order-md-last img-fluid" src="../assets/img/brush-teeth.png"
           alt="">
         <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
           <div class="text mt-5">
