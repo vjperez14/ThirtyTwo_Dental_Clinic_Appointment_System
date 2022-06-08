@@ -8369,7 +8369,8 @@ h1, h2, h3, h4, h5,
         text-align: center;
         height: 750px; } }
     .hero-wrap .slider-text .one-third {
-      width: 60%;
+      width: 50%;
+      height: 60%;
       position: relative;
       z-index: -1; }
       .hero-wrap .slider-text .one-third .overlay {
