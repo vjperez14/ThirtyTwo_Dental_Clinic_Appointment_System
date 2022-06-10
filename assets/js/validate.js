@@ -103,6 +103,7 @@ $(document).ready(function () {
 
 		// removing span text before message
 		$("#error").remove();
+		var mailformat = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 		var password = $("#registerpassword").val()
 		var conFpassword = $("#confirmpassword").val()
 
@@ -129,7 +130,12 @@ $(document).ready(function () {
 			$("#registerpassword").after("<span id='error' class='text-danger'> Enter your password </span>");
 			return 0;
 		}	
-		
+
+		if (!$("#registeremail").val().match(mailformat)) {
+            $("#registeremail").after("<span id='error' class='text-danger'> You have entered invalid email address </span>");
+            return 0;
+        }
+
 			
 		if (password.length <= 8) {
 			$("#registerpassword").after("<span id='error' class='text-danger'> Password must be atleast 8 characters </span>");
