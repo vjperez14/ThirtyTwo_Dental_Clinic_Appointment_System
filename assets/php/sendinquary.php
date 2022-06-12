@@ -7,7 +7,7 @@ require '../vendor/PHPMailerMaster/PHPMailer-master/src/Exception.php';
 require '../vendor/PHPMailerMaster/PHPMailer-master/src/PHPMailer.php';
 require '../vendor/PHPMailerMaster/PHPMailer-master/src/SMTP.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save']) && $_POST['save'] == 1) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
 
     }
-    header("Location: ../../contact.php");
+    echo "Your inquiry has been sent.";
 }
 
 

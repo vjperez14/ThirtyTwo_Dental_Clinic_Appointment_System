@@ -182,7 +182,6 @@
       <div class="row block-9">
 
         <div class="col-md-6 pr-md-5">
-          <form action="assets/php/sendinquary.php" name="form1" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <input type="text" id="name" class="form-control" placeholder=" Full Name" name="name" required>
             </div>
@@ -195,9 +194,8 @@
                 name="message"></textarea>
             </div>
             <div class="form-group">
-              <input type="submit" name="setapp" value="Send Inquiry" class="btn btn-secondary py-3 px-5">
+              <button type="submit" class="btn btn-secondary py-3 px-5" id="send">Send</button>
             </div>
-          </form>
         </div>
         <div class="col-md-6 wow slideInUp" data-wow-delay="0.6s">
           <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
@@ -326,8 +324,8 @@
   </script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-  </script>
+  <script src="assets/js/validateinquiry.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

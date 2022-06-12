@@ -241,18 +241,16 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="assets/php/reset_password_logic.php" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Your email address</label>
-                            <input class="form-control" type="email" name="email">
-                        </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Your email address</label>
+                        <input class="form-control" type="email" id="reset-email">
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" name="reset-password" value="Submit">
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
     </div>
@@ -290,6 +288,8 @@
 
     <script src="assets/js/scrollax.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/validate_reset_password.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

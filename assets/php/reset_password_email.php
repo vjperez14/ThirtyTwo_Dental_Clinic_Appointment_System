@@ -11,7 +11,7 @@ function sendResetPasswordEmail($userEmail, $token) {
     $mail = new PHPMailer();
     $mail->IsSMTP(); // telling the class to use SMTP
     $mail->Host       = "thirtytwodentalclinic.com"; // SMTP server
-    $mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
                                         // 1 = errors and messages
                                         // 2 = messages only
     $mail->SMTPAuth   = "true";                  // enable SMTP authentication
@@ -58,9 +58,7 @@ function sendResetPasswordEmail($userEmail, $token) {
     echo "Error while sending Email.";
     var_dump($mail);
     } else {
-        echo "<script type='text/javascript'>";
-        echo "window.location = '../../login.php'";
-        echo "</script>";
+
     }
 }
 

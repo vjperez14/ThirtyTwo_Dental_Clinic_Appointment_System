@@ -12,7 +12,7 @@ try {
     Accept email of user whose password is to be reset
     Send email to user to reset their password
 */
-if (isset($_POST['reset-password'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reset_password']) && $_POST['reset_password'] == 1) {
     $email = mysqli_real_escape_string($db, $_POST['email']);
     // ensure that the user exists on our system
     $query = "SELECT email FROM registered_accounts WHERE email='$email'";
@@ -20,8 +20,10 @@ if (isset($_POST['reset-password'])) {
 
     if (empty($email)) {
         array_push($errors, "Your email is required");
+        echo "empty";
     }else if(mysqli_num_rows($results) <= 0) {
         array_push($errors, "Sorry, no user exists on our system with that email");
+        echo "zero";
     }
     // generate a unique random token of length 100
     $token = bin2hex(random_bytes(50));
@@ -34,6 +36,7 @@ if (isset($_POST['reset-password'])) {
 
         // Send email to user with the token in a link they can click on
         sendResetPasswordEmail($email, $token);
+        echo "Request for reset password has been sent.";
     }
 }
 
