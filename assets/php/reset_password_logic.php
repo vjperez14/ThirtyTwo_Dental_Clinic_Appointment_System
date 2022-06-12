@@ -3,7 +3,7 @@ include('reset_password_email.php');
 session_start();
 $errors = [];
 try {
-    $db = mysqli_connect('localhost', 'thirtytwo', 'dentalclinic', 'thirtytwo');
+    $db = mysqli_connect('localhost', 'thirtytwo', 'denatalclinic', 'thirtytwo');
 } catch (Exception $e) {
     $db = mysqli_connect('localhost', 'root', '', 'thirtytwo');
 }
