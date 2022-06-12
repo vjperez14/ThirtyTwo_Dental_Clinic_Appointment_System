@@ -48,7 +48,7 @@ function sendResetPasswordEmail($userEmail, $token) {
     </head>
     <body>
         <div class="wrapper">
-            <p>Hi there, click on this <a href="http://localhost/thirtytwo/new_password_form.php?token=' . $token . '">link</a> to reset your password on our site</p>
+            <p>Hi there, click on this <a href="https://thirtytwodentalclinic.com/new_password_form.php?token=' . $token . '">link</a> to reset your password on our site</p>
         </div>
     </body>
     </html>';
