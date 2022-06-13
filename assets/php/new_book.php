@@ -26,10 +26,17 @@
         $sqlCheck = "SELECT date, time FROM appointments WHERE time = '$selectedTime' AND date = '$date'";
         $sqlCheckResult = mysqli_query($con, $sqlCheck);
         $checkRow = mysqli_num_rows($sqlCheckResult);
+
+        $sqlAppt = "SELECT * FROM appointments WHERE email = '$email' AND status = 'pending' OR status = 'approved'";
+        $sqlApptResult = mysqli_query($con, $sqlAppt);
+        $checkApptRow = mysqli_num_rows($sqlApptResult);
+
         if ($checkRow > 0) {
             echo "taken";
         } elseif ($time_24hour < $curtime && date("Y-m-d") == $date ) {
             echo "late";
+        } elseif ($checkApptRow > 0){
+            echo "pending";
         } else {
             $sql = "INSERT INTO appointments (requestee, name, phone, email, service, date, time, issue, ticket, status, notif_status) VALUES ($fk_id,'$name', $phone, '$email', '$service', '$date', '$time', '$issue', '$ticket', 'pending', 1) ";
             $result = mysqli_query($con, $sql);

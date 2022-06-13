@@ -66,6 +66,15 @@ $(document).ready(function () {
 						showConfirmButton: false,
 						allowOutsideClick: false
 					});
+				} else if (response == "pending") {
+					Swal.fire({
+						icon: 'error',
+						title: 'Opps...',
+						text: 'You have still pending appointment',
+						timer: 3000,
+						showConfirmButton: false,
+						allowOutsideClick: false
+					});
 				} else {
 					Swal.fire({
 						icon: 'success',

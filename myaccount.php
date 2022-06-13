@@ -192,21 +192,24 @@
                                 $samplecurdate = date("d", strtotime(date('Y-d-m')));
                                 $aptdate = date("d", strtotime($row['date']));
                                 if ($row['status'] == 'completed') {
-                                    $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Complete</button>";
-                                    $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
+                                    $status = "<button type='button' class='btn btn-success' data-title='Your appointment has been completed'>Complete</button>";
+                                    // $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
                                 } else if ($row['status'] == 'declined') {
-                                    $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Decline</button>";
-                                    $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
+                                    $status = "<button type='button' class='btn btn-danger' data-title='Your appointment has been declined'>Decline</button>";
+                                    // $action = "<i class='fa fa-file-text-o' aria-hidden='true'></i>";
                                 } else if ($row['status'] == 'pending') {
-                                    $status = "<button type='button' class='btn btn-warning' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>For Approval</button>";
+                                    $status = "<button type='button' class='btn btn-warning' data-title='Your appointment is still being reviewed by the admin'>For Approval</button>";
                                     $action = "<a href=# onclick='cancelappt($id)'><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
                                 } else if ($row['status'] == 'approved') {
-                                    $status = "<button type='button' class='btn btn-success' data-title='Your appointment is now secured. Our technician will be contacting you on the day of the appointment'>Approved</button>";
+                                    $status = "<button type='button' class='btn btn-success' data-title='Your appointment is approved'>Approved</button>";
                                     if ($aptdate-$samplecurdate <= 0) {
                                         $action = '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#reschedmodal'.$id.'" disabled>Reschedule</button>';
                                     } else {
                                         $action = '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#reschedmodal'.$id.'" >Reschedule</button>';
                                     }
+                                } else if ($row['status'] == 'Cancelled') {
+                                    $status = "<button type='button' class='btn btn-danger' data-title='Your appointment is cancelled'>Cancelled</button>";
+                                    // $action = "<a href=# onclick='cancelappt($id)'><i style='font-size:20px' class='fa'>&#xf00d;</i> Cancel Appointment</a>";
                                 }
                                 echo "<tr>
                                         <td><b>" .$row['service']. "</b><br>Date: ". date("F j, Y", strtotime($row['date'])) ."<br>Time: ". $time ."</td>".
@@ -511,8 +514,12 @@
 
                 <!-- <script src="assets/js/recommend.js"></script> -->
                 <script>
-                var today = new Date().toISOString().split('T')[0];
-                document.getElementsByName("date")[0].setAttribute('min', today);
+                    const date = document.getElementsByClassName("date");
+                    var today = new Date().toISOString().split('T')[0];
+                    // document.getElementsByName("date")[0].setAttribute('min', today);
+                    for (var i = 0; i < date.length; i++) {
+                        date[i].setAttribute('min', today);
+                    }
                 </script>
 </body>
 

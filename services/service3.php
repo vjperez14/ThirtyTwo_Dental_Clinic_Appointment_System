@@ -55,7 +55,7 @@
                   case 'value':{
                       ?>
                         <li class='nav-item'><a href='myaccount.php' class='nav-link'><span>My Account</span></a></li>
-                        <li class='nav-item'><a href='logout.php' class='nav-link'><span>Logout</span></a></li>
+                        <li class='nav-item'><a href='../assets/php/logout.php' class='nav-link'><span>Logout</span></a></li>
                     <?php
                   break;
                   }
