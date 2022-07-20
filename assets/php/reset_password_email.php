@@ -9,17 +9,16 @@ require '../vendor/PHPMailerMaster/PHPMailer-master/src/SMTP.php';
 function sendResetPasswordEmail($userEmail, $token) {
     
     $mail = new PHPMailer();
-    $mail->IsSMTP(); // telling the class to use SMTP
-    $mail->Host       = "thirtytwodentalclinic.com"; // SMTP server
-    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-                                        // 1 = errors and messages
-                                        // 2 = messages only
-    $mail->SMTPAuth   = "true";                  // enable SMTP authentication
-    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-    $mail->Host       = "thirtytwodentalclinic.com";      // sets GMAIL as the SMTP server
-    $mail->Port       = 465; 
-    $mail->Username   = "no-reply@thirtytwodentalclinic.com";
-    $mail->Password   = "Dontreply.1";
+    $mail->IsSMTP();
+    $mail->Mailer = "smtp";
+
+    $mail->SMTPDebug  = 0;  
+    $mail->SMTPAuth   = TRUE;
+    $mail->SMTPSecure = "tls";
+    $mail->Port       = 587;
+    $mail->Host       = "smtp.gmail.com";
+    $mail->Username   = "ugereyes14@gmail.com";
+    $mail->Password   = "wcckvozjqdffprew";
 
     $mail->IsHTML(true);
     $mail->setFrom('no-reply@thirtytwodentalclinic.com', 'ThirtyTwoDentalClinic');
@@ -48,7 +47,7 @@ function sendResetPasswordEmail($userEmail, $token) {
     </head>
     <body>
         <div class="wrapper">
-            <p>Hi there, click on this <a href="https://thirtytwodentalclinic.com/new_password_form.php?token=' . $token . '">link</a> to reset your password on our site</p>
+            <p>Hi there, click on this <a href="http://localhost/thirtytwo/new_password_form.php?token=' . $token . '">link</a> to reset your password on our site</p>
         </div>
     </body>
     </html>';

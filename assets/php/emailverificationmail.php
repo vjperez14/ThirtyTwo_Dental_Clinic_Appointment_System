@@ -11,17 +11,16 @@ require '../vendor/PHPMailerMaster/PHPMailer-master/src/SMTP.php';
 function sendVerificationEmail($userEmail, $token) {
     
     $mail = new PHPMailer();
-    $mail->IsSMTP(); // telling the class to use SMTP
-    $mail->Host       = "thirtytwodentalclinic.com"; // SMTP server
-    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-                                        // 1 = errors and messages
-                                        // 2 = messages only
-    $mail->SMTPAuth   = "true";                  // enable SMTP authentication
-    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-    $mail->Host       = "thirtytwodentalclinic.com";      // sets GMAIL as the SMTP server
-    $mail->Port       = 465; 
-    $mail->Username   = "no-reply@thirtytwodentalclinic.com";
-    $mail->Password   = "Dontreply.1";
+    $mail->IsSMTP();
+    $mail->Mailer = "smtp";
+
+    $mail->SMTPDebug  = 0;  
+    $mail->SMTPAuth   = TRUE;
+    $mail->SMTPSecure = "tls";
+    $mail->Port       = 587;
+    $mail->Host       = "smtp.gmail.com";
+    $mail->Username   = "ugereyes14@gmail.com";
+    $mail->Password   = "wcckvozjqdffprew";
 
     $mail->IsHTML(true);
     $mail->setFrom('no-reply@thirtytwodentalclinic.com', 'ThirtyTwoDentalClinic');
@@ -51,7 +50,7 @@ function sendVerificationEmail($userEmail, $token) {
     <body>
         <div class="wrapper">
             <p>Thank you for signing up on our site. Please click on the link below to verify your account:.</p>
-            <a href="https://thirtytwodentalclinic.com/assets/php/verify_email.php?token=' . $token . '">Verify Email!</a>
+            <a href="http://localhost/thirtytwo/assets/php/verify_email.php?token=' . $token . '">Verify Email!</a>
         </div>
     </body>
     </html>';

@@ -13,21 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save']) && $_POST['sav
     $message = $_POST['message'];
 
     $mail = new PHPMailer();
-    $mail->IsSMTP(); // telling the class to use SMTP
-    $mail->Host       = "thirtytwodentalclinic.com"; // SMTP server
-    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-                                        // 1 = errors and messages
-                                        // 2 = messages only
-    $mail->SMTPAuth   = "true";                  // enable SMTP authentication
-    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-    $mail->Host       = "thirtytwodentalclinic.com";      // sets GMAIL as the SMTP server
-    $mail->Port       = 465; 
-    $mail->Username   = "inquiry@thirtytwodentalclinic.com";
-    $mail->Password   = "Thirty2dentalclinic";
+    $mail->IsSMTP();
+    $mail->Mailer = "smtp";
+
+    $mail->SMTPDebug  = 0;  
+    $mail->SMTPAuth   = TRUE;
+    $mail->SMTPSecure = "tls";
+    $mail->Port       = 587;
+    $mail->Host       = "smtp.gmail.com";
+    $mail->Username   = "ugereyes14@gmail.com";
+    $mail->Password   = "wcckvozjqdffprew";
 
     $mail->IsHTML(true);
     $mail->setFrom($email, $name);
-    $mail->AddAddress('inquiry@thirtytwodentalclinic.com');
+    $mail->AddAddress('ugereyes14@gmail.com');
     $mail->Subject = "For Inquiry";
     $content =  '<!DOCTYPE html>
     <html lang="en">
