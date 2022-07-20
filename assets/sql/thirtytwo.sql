@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2022 at 11:12 AM
+-- Generation Time: Jul 20, 2022 at 11:20 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -108,7 +108,8 @@ CREATE TABLE `registered_accounts` (
   `email` varchar(100) NOT NULL,
   `password` varchar(35) NOT NULL,
   `token` varchar(255) DEFAULT NULL,
-  `phone` bigint(11) NOT NULL
+  `phone` bigint(11) NOT NULL,
+  `verified` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
